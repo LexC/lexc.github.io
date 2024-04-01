@@ -1,6 +1,6 @@
 theme: jekyll-theme-minimal
 title: Alex Carvalho
-logo: "/images/headshot.jpeg" # your photo (or logo) here
+logo: "https://raw.githubusercontent.com/LexC/lexc.github.io/main/images/headshot.jpg" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
   Neuroscientist | Data Scientist | Scientific Programmer
   <br>
