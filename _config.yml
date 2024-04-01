@@ -1,6 +1,10 @@
-title: Minimal theme
-logo: /assets/img/logo.png
-description: Minimal is a theme for GitHub Pages.
-show_downloads: true
-google_analytics:
 theme: jekyll-theme-minimal
+title: Alex Carvalho
+logo: "/images/headshot.jpeg" # your photo (or logo) here
+description: > # your text below (remove <br> elements if you don't need line breaks)
+  Neuroscientist | Data Scientist | Scientific Programmer
+  <br>
+  To get in touch, please reach out via <a href="https://www.linkedin.com/in/alexccrv/">LinkedIn</a>
+  <br>
+  <br>
+#show_downloads: true
