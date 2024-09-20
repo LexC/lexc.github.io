@@ -1,3 +1,6 @@
+@import "{{ site.theme }}";
+
+
 /* General body styling */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
