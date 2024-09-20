@@ -1,14 +1,5 @@
-/* General styling */
-body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-  }
-  
-  /* Blue accent color for links */
-  a {
+/* Blue accent color for links */
+a {
     color: #007acc;
     text-decoration: none;
   }
@@ -19,75 +10,12 @@ body {
     text-decoration: underline;
   }
   
-  /* Styling the header */
-  header {
-    background-color: #f4f4f4;
-    padding: 20px;
+  /* Styling the header and footer with a subtle blue accent */
+  header, footer {
     border-bottom: 2px solid #007acc;
-    text-align: center;
-  }
-  
-  header h1 {
-    margin: 0;
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  header img {
-    border-radius: 50%;
-    max-width: 150px;
-  }
-  
-  /* Footer styling */
-  footer {
-    background-color: #f4f4f4;
-    padding: 10px 0;
-    text-align: center;
-    border-top: 2px solid #007acc;
-    margin-top: 20px;
-  }
-  
-  footer p {
-    margin: 0;
-    color: #333;
-  }
-  
-  /* Section and content styling */
-  section {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    color: #333;
-  }
-  
-  /* About section styling */
-  #about {
-    text-align: center;
-    padding: 40px 0;
-  }
-  
-  #about h2 {
-    font-size: 2em;
-    color: #007acc;
-    margin-bottom: 20px;
-  }
-  
-  #about p {
-    font-size: 1.2em;
-    line-height: 1.8;
-    max-width: 700px;
-    margin: 0 auto;
-    color: #555;
   }
   
   /* Social Links styling */
-  .social-links {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
   .social-links a {
     margin: 0 15px;
     font-size: 1.5em;
@@ -97,20 +25,5 @@ body {
   
   .social-links a:hover {
     color: #005a99;
-  }
-  
-  /* Small device adjustments */
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 2em;
-    }
-  
-    #about h2 {
-      font-size: 1.8em;
-    }
-  
-    #about p {
-      font-size: 1.1em;
-    }
   }
   
