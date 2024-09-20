@@ -1,29 +1,16 @@
 /* Blue accent color for links */
 a {
     color: #007acc;
-    text-decoration: none;
-  }
-  
-  /* Hover effect for links */
-  a:hover {
-    color: #005a99;
-    text-decoration: underline;
   }
   
   /* Styling the header and footer with a subtle blue accent */
   header, footer {
+    background-color: #f4f4f4;
     border-bottom: 2px solid #007acc;
   }
   
-  /* Social Links styling */
-  .social-links a {
-    margin: 0 15px;
-    font-size: 1.5em;
-    color: #007acc;
-    text-decoration: none;
-  }
-  
-  .social-links a:hover {
+  /* Optionally, you can style the hover effect for links */
+  a:hover {
     color: #005a99;
   }
   
