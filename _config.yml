@@ -3,7 +3,7 @@ title: Alex Carvalho
 logo: "https://raw.githubusercontent.com/LexC/lexc.github.io/main/images/headshot.jpg"  # your photo (or logo) here
 description: >
   Data Scientist | Scientific Programmer | Physics | Life Sciences
-  
+  <br>
   Data Scientist with 8+ years in data-driven research, algorithm development, data analysis, and currently machine learning. As a physicist, I bring a strong background in advanced mathematics and problem-solving to my work. Experienced in managing large-scale clinical datasets, including award-winning post-COVID research. Proficient in Python, SQL, MATLAB, and advanced statistical analysis. Published in high-impact journals with expertise in signal processing and data visualization.
 
 # Social links
@@ -12,4 +12,4 @@ social_links:
   github: "https://github.com/Lex"
 
 # Link to custom CSS
-css: assets/css/style.css
+#css: assets/css/style.css
