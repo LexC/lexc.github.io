@@ -1,0 +1,134 @@
+/* General body styling */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+  }
+  
+  /* Flexbox layout for the main content */
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Styling for the left section: picture and About Me */
+  .left-section {
+    flex: 1;
+    max-width: 45%; /* Adjust this to control the width of the left section */
+    margin-right: 20px;
+  }
+  
+  header img {
+    border-radius: 50%;
+    max-width: 150px;
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .about {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #555;
+  }
+  
+  /* Styling for the right section: projects */
+  .right-section {
+    flex: 1;
+    max-width: 50%; /* Adjust this to control the width of the right section */
+  }
+  
+  .projects {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .projects h2 {
+    color: #007acc;
+    font-size: 1.8em;
+  }
+  
+  /* Blue accent color for links */
+  a {
+    color: #007acc;
+    text-decoration: none;
+  }
+  
+  /* Hover effect for links */
+  a:hover {
+    color: #005a99;
+    text-decoration: underline;
+  }
+  
+  /* Styling the header */
+  header {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-bottom: 2px solid #007acc;
+    text-align: center;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  header img {
+    border-radius: 50%;
+    max-width: 150px;
+  }
+  
+  /* Footer styling */
+  footer {
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    text-align: center;
+    border-top: 2px solid #007acc;
+    margin-top: 20px;
+  }
+  
+  footer p {
+    margin: 0;
+    color: #333;
+  }
+  
+  /* Social Links styling */
+  .social-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-links a {
+    margin: 0 15px;
+    font-size: 1.5em;
+    color: #007acc;
+    text-decoration: none;
+  }
+  
+  .social-links a:hover {
+    color: #005a99;
+  }
+  
+  /* Media query for mobile responsiveness */
+  @media (max-width: 768px) {
+    .main-container {
+      flex-direction: column;
+    }
+  
+    .left-section, .right-section {
+      max-width: 100%;
+    }
+  
+    .left-section {
+      margin-right: 0;
+    }
+  }
+  
