@@ -2,13 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0;url=https://www.datascienceportfol.io/lexc" />
-    <title>Redirecting...</title>
     <script type="text/javascript">
-      window.location.href = "https://www.datascienceportfol.io/lexc";
+      // Define the URL variable here
+      var redirectUrl = "https://www.datascienceportfol.io/lexc";
+
+      // Use the variable in the meta refresh tag
+      document.addEventListener("DOMContentLoaded", function() {
+        var meta = document.createElement('meta');
+        meta.setAttribute('http-equiv', 'refresh');
+        meta.setAttribute('content', '0;url=' + redirectUrl);
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      });
+
+      // Use the variable to redirect the page
+      window.location.href = redirectUrl;
     </script>
+    <title>Redirecting...</title>
   </head>
   <body>
-    <p>If you are not redirected automatically, follow this <a href="https://www.datascienceportfol.io/lexc">link</a>.</p>
+    <p>If you are not redirected automatically, follow this <a id="redirectLink" href="#">link</a>.</p>
+    <script type="text/javascript">
+      // Use the variable in the anchor tag
+      document.getElementById("redirectLink").href = redirectUrl;
+    </script>
   </body>
 </html>
