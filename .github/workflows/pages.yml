@@ -26,7 +26,7 @@ jobs:
       - name: Check generated site
         run: |
           test -s dist/index.html
-          test -s dist/static/css/site.css
+          test -s dist/css/site.css
           test -s dist/about/index.html
           test -s dist/research/index.html
           test -s dist/engineering/index.html
