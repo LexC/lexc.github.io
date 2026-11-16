@@ -24,7 +24,7 @@ npm run css:build
 lektor build --output-path dist
 ```
 
-The GitHub Actions workflow builds and deploys `dist/` on merges to `main`, after GitHub Pages is configured to use **GitHub Actions** as the build source.
+Lektor publishes files from `assets/` at the site root, so the compiled CSS is served as `/css/site.css`.\n\nThe GitHub Actions workflow builds and deploys `dist/` on merges to `main`, after GitHub Pages is configured to use **GitHub Actions** as the build source.
 
 ## Architecture
 
