@@ -1,0 +1,15 @@
+_model: page
+---
+title: Engineering
+---
+eyebrow: FROM ANALYSIS TO SYSTEMS
+---
+summary: Software built with scientific discipline.
+---
+body:
+
+I work with Python across academic research and industry, and lead development of software platforms with responsibility for backend architecture, implementation, technical decisions, and code review.
+
+My engineering interests include reliable automation, well-structured data workflows, maintainable software systems, and computational tools that translate complex domain knowledge into practical results.
+
+Selected projects and architecture case studies will be added here as their public descriptions are reviewed.

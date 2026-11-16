@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+{% block content %}
+<section class="inner-hero"><p class="eyebrow"><span class="eyebrow-indicator" aria-hidden="true"></span>{{ this.eyebrow }}</p><h1>{{ this.title }}<span class="period">.</span></h1><p class="inner-summary">{{ this.summary }}</p><div class="inner-accent" aria-hidden="true"></div></section>
+<section class="inner-content"><div class="article-body">{{ this.body }}</div><aside class="inner-aside"><span>EXPLORING WHAT'S NEXT</span><div class="aside-mark" aria-hidden="true">◎</div><a href="{{ '/contact/'|url }}">Let's connect ↗</a></aside></section>
+<section class="bottom-navigation"><a href="{{ '/'|url }}"><span>BACK TO HOME</span><strong>Explore the overview ↗</strong></a></section>
+{% endblock %}
