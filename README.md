@@ -10,7 +10,7 @@ Requirements: Python 3.11+, Node.js 20+.
 python -m venv .venv
 # Activate .venv for your shell
 python -m pip install -r requirements.txt
-npm ci
+npm install --no-package-lock
 npm run css:build
 lektor server
 ```
