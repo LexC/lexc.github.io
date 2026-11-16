@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Alex Carvalho · Scientific thinking. Engineering execution.{% endblock %}
+{% block content %}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="eyebrow-indicator" aria-hidden="true"></span> PHYSICIST / SOFTWARE ENGINEER / TECHNICAL LEAD</p>
+    <h1 id="hero-title">Scientific thinking<span class="period">.</span><br><span class="headline-muted">Engineering execution.</span></h1>
+    <p class="hero-description">I build at the intersection of scientific research, computational thinking, and software engineering. From investigating complex questions to designing systems that last.</p>
+    <div class="hero-actions"><a class="button-primary" href="{{ '/about/'|url }}">Explore my work <span aria-hidden="true">↗</span></a><a class="text-link" href="{{ '/contact/'|url }}">Get in touch <span aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="heatmap-stage" aria-label="Abstract heatmap inspired by computational visualization" role="img">
+    <div class="heatmap-orbit orbit-one"></div><div class="heatmap-orbit orbit-two"></div>
+    <div class="heatmap-glow"></div><div class="heatmap-glow heatmap-glow-secondary"></div>
+    <div class="heatmap-grid" aria-hidden="true"></div>
+    <span class="map-axis axis-top">FIG 01 / INTERSECTIONS</span><span class="map-axis axis-bottom">SCIENCE × ENGINEERING</span>
+    <div class="heatmap-legend"><span>LOW</span><i></i><span>HIGH</span></div>
+  </div>
+  <div class="hero-index"><span>01 / INTRODUCTION</span><span>SCROLL TO EXPLORE ↓</span></div>
+</section>
+<section class="intro-band" aria-label="Areas of expertise"><div>Physics &amp; scientific computing</div><span class="band-star">✳</span><div>Data science &amp; machine learning</div><span class="band-star">✳</span><div>Software architecture &amp; leadership</div></section>
+<section class="section perspectives" aria-labelledby="perspectives-title">
+  <div class="section-heading"><p class="eyebrow">WHAT I BRING TO THE TABLE</p><h2 id="perspectives-title">Different disciplines.<br><em>One way of thinking.</em></h2><p>I work comfortably across disciplines, bringing rigorous analysis to engineering challenges and pragmatic delivery to scientific ideas.</p></div>
+  <div class="expertise-grid">
+    <a class="expertise-card" href="{{ '/research/'|url }}"><div class="expertise-top"><span class="card-number">01 / RESEARCH</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="card-icon science-icon" aria-hidden="true">◎</div><h3>Explore the unknown.</h3><p>Physics, mathematical modeling, and published research involving machine learning.</p><span class="card-link">Explore research <span aria-hidden="true">→</span></span></a>
+    <a class="expertise-card" href="{{ '/engineering/'|url }}"><div class="expertise-top"><span class="card-number">02 / ENGINEERING</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="card-icon engineering-icon" aria-hidden="true">⌘</div><h3>Build what lasts.</h3><p>Python development, backend architecture, data workflows, and technical leadership.</p><span class="card-link">Explore engineering <span aria-hidden="true">→</span></span></a>
+  </div>
+</section>
+<section class="statement-section"><div class="statement-meta">A PRINCIPLE I WORK BY <span>↗</span></div><p>Good engineering isn't about building <em>more.</em> It's about understanding <em>what matters</em> and building it exceptionally well.</p><div class="statement-footer"><span>CLARITY IS A FEATURE.</span><span class="statement-stroke" aria-hidden="true"></span></div></section>
+<section class="connect-section"><div><p class="eyebrow">WHAT COMES NEXT</p><h2>Let's work on something<br><em>that matters.</em></h2><p>I'm drawn to ambitious work at the intersection of science, technology, and human impact.</p></div><a class="button-primary" href="{{ '/contact/'|url }}">Start a conversation <span aria-hidden="true">↗</span></a></section>
+{% endblock %}
