@@ -1,4 +1,4 @@
-name: Build and deploy Lektor website
+name: Validate Lektor website
 on:
   push:
     branches: [main]
@@ -31,20 +31,5 @@ jobs:
           test -s dist/research/index.html
           test -s dist/engineering/index.html
           test -s dist/contact/index.html
-      - uses: actions/upload-pages-artifact@v3
-        if: github.event_name != 'pull_request'
-        with:
-          path: dist
-  deploy:
-    if: github.event_name != 'pull_request'
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+# Publication deliberately disabled during private development.
+# Restore a Pages deployment job only when the site is ready to launch.
