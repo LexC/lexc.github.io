@@ -1,4 +1,4 @@
-name: Validate Lektor website
+name: Validate Flask portfolio (publishing disabled)
 on:
   push:
     branches: [main]
@@ -19,17 +19,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: python -m pip install -r requirements.txt
+      - run: python -m pip install -r requirements-dev.txt
       - run: npm install --no-package-lock
       - run: npm run css:build
-      - run: lektor build --output-path dist
-      - name: Check generated site
+      - run: python -m pytest -q
+      - run: python freeze.py
+      - name: Check generated static site
         run: |
           test -s dist/index.html
-          test -s dist/css/site.css
-          test -s dist/about/index.html
-          test -s dist/research/index.html
-          test -s dist/engineering/index.html
-          test -s dist/contact/index.html
-# Publication deliberately disabled during private development.
-# Restore a Pages deployment job only when the site is ready to launch.
+          test -s dist/static/css/site.css
+          test -s dist/static/js/site.js
+          grep -q 'id="projects"' dist/index.html
+          grep -q 'Scientific thinking' dist/index.html
+# Deliberately no GitHub Pages deployment job.
+# The public site stays unpublished until explicitly launched.

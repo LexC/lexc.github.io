@@ -1,10 +1,10 @@
 {
-  "name": "alex-carvalho-portfolio",
+  "name": "lex-portfolio",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
-    "css:build": "tailwindcss -i ./assets/css/input.css -o ./assets/css/site.css --minify",
-    "css:watch": "tailwindcss -i ./assets/css/input.css -o ./assets/css/site.css --watch"
+    "css:build": "tailwindcss -i ./static/css/input.css -o ./static/css/site.css --minify",
+    "css:watch": "tailwindcss -i ./static/css/input.css -o ./static/css/site.css --watch"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.0",
