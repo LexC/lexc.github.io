@@ -2,8 +2,10 @@
 
 from pathlib import Path
 
-from app import create_app
-from scientific_art import heatmap_svg
+from portfolio import create_app
+from portfolio.scientific_art import heatmap_svg
+from portfolio import content
+import pytest
 
 
 def test_homepage_has_one_page_sections():
@@ -30,7 +32,14 @@ def test_heatmap_is_deterministic_and_accessible():
     assert "not measured data" in heatmap_svg()
 
 
-def test_static_build_assets_exist_when_built():
-    stylesheet = Path("static/css/site.css")
-    if stylesheet.exists():
-        assert stylesheet.stat().st_size > 1000
+def test_missing_content_fails_clearly(monkeypatch):
+    monkeypatch.delitem(content.PROFILE, "name")
+    with pytest.raises(ValueError, match="name"):
+        create_app(testing=True)
+
+
+def test_editorial_text_is_escaped(monkeypatch):
+    monkeypatch.setitem(content.PROFILE, "name", "<script>alert(1)</script>")
+    html = create_app(testing=True).test_client().get("/").get_data(as_text=True)
+    assert "&lt;script&gt;" in html
+    assert "<script>alert(1)</script>" not in html

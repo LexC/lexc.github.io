@@ -46,6 +46,30 @@ NAVIGATION = (
     ("Contact", "contact"),
 )
 
+RESEARCH = {
+    "kicker": "SCIENTIFIC FOUNDATION",
+    "headline": "Questions worth investigating.",
+    "description": "Scientific computing, biomedical research, statistical methods, and machine learning.",
+    "note": "Publication bibliography coming after review.",
+}
+
+
+def validate_content():
+    """Fail early on missing copy or invalid navigation."""
+    required = {"brand", "name", "full_name", "eyebrow", "headline", "headline_accent",
+                "tagline", "intro", "about", "experience_intro", "research_intro",
+                "projects_intro", "contact_intro", "github_url"}
+    for key in required:
+        if not isinstance(PROFILE.get(key), str) or not PROFILE[key].strip():
+            raise ValueError(f"Missing profile content: {key}")
+    targets = [target for _, target in NAVIGATION]
+    if len(set(targets)) != len(targets) or set(targets) != {"about", "experience", "research", "projects", "contact"}:
+        raise ValueError("Navigation must reference each homepage section exactly once")
+    from urllib.parse import urlsplit
+    url = urlsplit(PROFILE["github_url"])
+    if url.scheme != "https" or not url.netloc:
+        raise ValueError("github_url must be an absolute HTTPS URL")
+
 EXPERTISE = (
     ("Biomedical science", "science"),
     ("Software engineering", "code"),

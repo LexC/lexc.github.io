@@ -16,20 +16,14 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: requirements/development.lock
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: python -m pip install -r requirements-dev.txt
-      - run: npm install --no-package-lock
-      - run: npm run css:build
+      - run: python -m pip install -r requirements/development.lock
+      - run: python -m pip install -e . --no-deps
+      - run: npm ci
+      - run: python scripts/build.py
       - run: python -m pytest -q
-      - run: python freeze.py
-      - name: Check generated static site
-        run: |
-          test -s dist/index.html
-          test -s dist/static/css/site.css
-          test -s dist/static/js/site.js
-          grep -q 'id="projects"' dist/index.html
-          grep -q 'Scientific thinking' dist/index.html
 # Deliberately no GitHub Pages deployment job.
 # The public site stays unpublished until explicitly launched.

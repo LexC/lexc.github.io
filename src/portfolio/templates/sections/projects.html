@@ -1,0 +1,14 @@
+<section class="content-section section-wrap" id="projects" aria-labelledby="projects-heading">
+  <div class="section-ident"><span class="section-index">04</span>
+    <h2 id="projects-heading">Projects</h2>
+    <p>{{ profile.projects_intro }}</p>
+  </div>
+  <div class="section-body">
+    <div class="project-grid">{% for project in projects %}<article class="project-card">
+        <div class="project-top"><span class="project-icon" aria-hidden="true">{{ project.icon }}</span><span class="project-index">{{ project.number }}</span>
+        </div>
+        <h3>{{ project.name }}</h3>
+        <p>{{ project.detail }}</p>
+      </article>{% endfor %}</div>
+  </div>
+</section>

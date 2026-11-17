@@ -1,8 +1,11 @@
 .venv/
+.venv-*/
 __pycache__/
 *.py[cod]
 .pytest_cache/
 node_modules/
 dist/
-static/css/site.css
+src/portfolio/static/css/site.css
+*.egg-info/
+build/
 .DS_Store

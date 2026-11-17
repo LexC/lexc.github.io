@@ -1,0 +1,10 @@
+<section class="content-section section-wrap" id="about" aria-labelledby="about-heading">
+  <div class="section-ident"><span class="section-index">01</span>
+    <h2 id="about-heading">About</h2>
+  </div>
+  <div class="section-body">
+    <p class="section-lead">{{ profile.about }}</p>
+    <ul class="expertise-list">{% for label, icon in expertise %}<li><span class="expertise-icon" aria-hidden="true">{% if icon == "science" %}✳{% elif icon == "code" %}〈/〉{% elif icon == "data" %}▤{% elif icon == "ml" %}◇{% else %}⌘{% endif %}</span><span>{{ label }}</span>
+      </li>{% endfor %}</ul>
+  </div>
+</section>
