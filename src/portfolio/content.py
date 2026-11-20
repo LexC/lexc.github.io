@@ -8,7 +8,7 @@ PROFILE = {
     "headline_accent": "Engineering execution.",
     "credentials": (
         "Physicist. Biomedical Researcher.",
-        "Software Development Lead.",
+        "Software Development Leader.",
     ),
     "python_experience": (
         "8+ years of Python experience spanning scientific computing, data science, "

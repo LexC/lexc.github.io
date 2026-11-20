@@ -20,7 +20,7 @@ def test_homepage_has_one_page_sections():
     assert "Lex" in html
     assert (
         "<span>Physicist. Biomedical Researcher.</span> "
-        "<span>Software Development Lead.</span>"
+        "<span>Software Development Leader.</span>"
     ) in html
     assert (
         "8+ years of Python experience spanning scientific computing, data science, "

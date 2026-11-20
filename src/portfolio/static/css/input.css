@@ -58,7 +58,7 @@ button,a {
 }
 /* Shared layout and navigation */
 .section-wrap {
-  width:min(1388px,81.3%);
+  width:min(1200px,81.3%);
   margin-inline:auto
 }
 .site-header {
@@ -70,7 +70,7 @@ button,a {
   backdrop-filter:blur(18px)
 }
 .header-inner {
-  width:min(1388px,81.3%);
+  width:min(1200px,81.3%);
   height:78px;
   margin:auto;
   padding:0;
@@ -139,14 +139,21 @@ button,a {
 }
 /* Hero and actions */
 .hero {
-  min-height:684px;
   display:grid;
   grid-template-columns:1fr 1.03fr;
   position:relative;
+  align-content:center;
   align-items:center;
-  padding-top:50px;
+  padding-top:88px;
   padding-bottom:88px;
   gap:12px
+}
+/* Use the browser window ratio, including its toolbars, rather than page ratio. */
+@media(min-width:721px) {
+  .window-landscape .hero {
+    min-height:calc(100vh - 79px);
+    min-height:calc(100dvh - 79px)
+  }
 }
 .hero-content {
   position:relative;
@@ -160,7 +167,7 @@ button,a {
   line-height:1.8
 }
 .hero h1 {
-  font-size:clamp(56px,5.6vw,96px);
+  font-size:clamp(56px,5vw,80px);
   line-height:1.05;
   letter-spacing:-.045em;
   white-space:nowrap;
@@ -511,8 +518,7 @@ button,a {
     display:none
   }
   .hero {
-    grid-template-columns:1fr 1fr;
-    min-height:580px
+    grid-template-columns:1fr 1fr
   }
   .hero h1 {
     font-size:clamp(40px,5.6vw,72px)
@@ -589,8 +595,7 @@ button,a {
     grid-template-columns:1fr;
     padding-top:44px;
     padding-bottom:65px;
-    gap:20px;
-    min-height:auto
+    gap:20px
   }
   .hero h1 {
     font-size:clamp(38px,10vw,70px);

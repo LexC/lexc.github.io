@@ -9,12 +9,24 @@
     <meta property="og:title" content="{{ profile.name }} | Scientific thinking. Engineering execution.">
     <meta property="og:description" content="Biophysics, scientific computing, and software engineering.">
     <title>{{ profile.name }} | Biophysics · Scientific Computing · Engineering</title>
+    <script>
+      (() => {
+        function updateWindowProportions() {
+          const width = window.outerWidth || window.innerWidth;
+          const height = window.outerHeight || window.innerHeight;
+          document.documentElement.classList.toggle("window-landscape", width >= height);
+        }
+        updateWindowProportions();
+        window.addEventListener("load", updateWindowProportions, { once: true });
+        window.addEventListener("resize", updateWindowProportions, { passive: true });
+      })();
+    </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
     <script defer src="{{ url_for('static', filename='js/site.js') }}"></script>
   </head>
-  <body>
+  <body id="top">
     <a class="skip-link" href="#about">Skip to content</a>
-    <header class="site-header" id="top">
+    <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="#top" aria-label="Lex, back to top"><span class="brand-stripe"></span><strong>{{ profile.brand }}</strong><span class="brand-dot">.</span></a>
         <button class="mobile-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
