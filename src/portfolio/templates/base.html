@@ -7,7 +7,7 @@
     <meta name="description" content="{{ profile.name }}: biophysics, scientific computing, and software engineering.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ profile.name }} | Scientific thinking. Engineering execution.">
-    <meta property="og:description" content="{{ profile.tagline }}">
+    <meta property="og:description" content="Biophysics, scientific computing, and software engineering.">
     <title>{{ profile.name }} | Biophysics · Scientific Computing · Engineering</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
     <script defer src="{{ url_for('static', filename='js/site.js') }}"></script>
@@ -17,7 +17,6 @@
     <header class="site-header" id="top">
       <div class="header-inner">
         <a class="brand" href="#top" aria-label="Lex, back to top"><span class="brand-stripe"></span><strong>{{ profile.brand }}</strong><span class="brand-dot">.</span></a>
-        <span class="header-fullname">{{ profile.full_name }}</span>
         <button class="mobile-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
         <nav class="site-nav" id="site-nav" aria-label="Sections">
           {% for label, section in navigation %}<a href="#{{ section }}"{% if loop.first %} aria-current="location"{% endif %}>{{ label }}</a>{% endfor %}
@@ -28,6 +27,6 @@
     <main>
       {% block content %}{% endblock %}
     </main>
-    <footer class="site-footer section-wrap"><span><strong>Lex</strong> · {{ profile.full_name }}</span><span>Built with Python and intention.</span><a href="#top">Back to top ↑</a></footer>
+    <footer class="site-footer section-wrap"><span><strong>{{ profile.brand }}</strong></span><span>Built with Python and intention.</span><a href="#top">Back to top ↑</a></footer>
   </body>
 </html>

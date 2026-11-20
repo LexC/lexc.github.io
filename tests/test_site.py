@@ -17,8 +17,15 @@ def test_homepage_has_one_page_sections():
                    'id="projects"', 'id="contact"'):
         assert anchor in html
     assert "Alex Carvalho" in html
-    assert "Alex de Castro Carvalho" in html
     assert "Lex" in html
+    assert (
+        "<span>Physicist. Biomedical Researcher.</span> "
+        "<span>Software Development Lead.</span>"
+    ) in html
+    assert (
+        "8+ years of Python experience spanning scientific computing, data science, "
+        "and software engineering."
+    ) in html
 
 
 def test_no_missing_routes():

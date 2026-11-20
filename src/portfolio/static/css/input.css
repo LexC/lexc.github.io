@@ -172,22 +172,41 @@ button,a {
   line-height:1.22;
   letter-spacing:-.045em;
   font-weight:700;
-  margin:0 0 24px
+  margin:0 0 12px
 }
 .accent-text {
   color:#00edf2
 }
-.hero-description {
-  max-width:650px;
-  font-size:clamp(16px,1.18vw,20px);
-  color:#f6f8f9;
-  line-height:1.42
+.hero-credentials {
+  max-width:46ch;
 }
-.hero-tagline {
-  font-size:16px;
-  font-style:italic;
+.hero-credentials::before {
+  content:"";
+  display:block;
+  width:44px;
+  height:3px;
+  margin-bottom:19px;
+  background:var(--color-cyan);
+}
+.hero-credentials-title {
+  margin:0;
   color:#f6f8f9;
-  margin:22px 0 0
+  font-size:clamp(19px,1.57vw,25px);
+  font-weight:400;
+  line-height:1.4;
+  letter-spacing:-.015em;
+  text-wrap:balance;
+}
+.hero-credentials-title span {
+  display:block;
+  max-width:100%;
+}
+.hero-credentials-detail {
+  margin:8px 0 0;
+  color:#d4e4eb;
+  font-size:16px;
+  font-weight:400;
+  line-height:1.55;
 }
 .actions {
   display:flex;
@@ -498,9 +517,6 @@ button,a {
   .hero h1 {
     font-size:clamp(40px,5.6vw,72px)
   }
-  .hero-description {
-    font-size:15px
-  }
   .section-wrap {
     width:calc(100% - 60px)
   }
@@ -590,12 +606,6 @@ button,a {
   }
   .scroll-hint {
     display:none
-  }
-  .hero-description {
-    font-size:15px
-  }
-  .hero-tagline {
-    font-size:14px
   }
   .content-section {
     padding-block:48px;

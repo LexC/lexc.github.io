@@ -3,15 +3,16 @@
 PROFILE = {
     "brand": "Lex",
     "name": "Alex Carvalho",
-    "full_name": "Alex de Castro Carvalho",
     "eyebrow": "BIOPHYSICS  ·  SCIENTIFIC COMPUTING  ·  ENGINEERING  ·  R&D",
     "headline": "Scientific thinking.",
     "headline_accent": "Engineering execution.",
-    "tagline": "Biophysicist by training, programmer by choice, curious by nature.",
-    "intro": (
-        "I work across biomedical science, scientific computing, data science, "
-        "and software engineering, from exploring complex questions to building "
-        "reliable technical solutions."
+    "credentials": (
+        "Physicist. Biomedical Researcher.",
+        "Software Development Lead.",
+    ),
+    "python_experience": (
+        "8+ years of Python experience spanning scientific computing, data science, "
+        "and software engineering."
     ),
     "about": (
         "I'm Alex de Castro Carvalho, a physicist working across scientific "
@@ -56,12 +57,17 @@ RESEARCH = {
 
 def validate_content():
     """Fail early on missing copy or invalid navigation."""
-    required = {"brand", "name", "full_name", "eyebrow", "headline", "headline_accent",
-                "tagline", "intro", "about", "experience_intro", "research_intro",
+    required = {"brand", "name", "eyebrow", "headline", "headline_accent",
+                "python_experience", "about", "experience_intro", "research_intro",
                 "projects_intro", "contact_intro", "github_url"}
     for key in required:
         if not isinstance(PROFILE.get(key), str) or not PROFILE[key].strip():
             raise ValueError(f"Missing profile content: {key}")
+    credentials = PROFILE.get("credentials")
+    if not isinstance(credentials, tuple) or not credentials or not all(
+        isinstance(role, str) and role.strip() for role in credentials
+    ):
+        raise ValueError("Missing profile content: credentials")
     targets = [target for _, target in NAVIGATION]
     if len(set(targets)) != len(targets) or set(targets) != {"about", "experience", "research", "projects", "contact"}:
         raise ValueError("Navigation must reference each homepage section exactly once")

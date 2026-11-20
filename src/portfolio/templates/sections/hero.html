@@ -3,8 +3,12 @@
     <p class="eyebrow">{{ profile.eyebrow }}</p>
     <h1 id="hero-heading">{{ profile.name }}</h1>
     <h2>{{ profile.headline }}<br><span class="accent-text">{{ profile.headline_accent }}</span></h2>
-    <p class="hero-description">{{ profile.intro }}</p>
-    <p class="hero-tagline">{{ profile.tagline }}</p>
+    <div class="hero-credentials">
+      <p class="hero-credentials-title">
+        {% for role in profile.credentials %}<span>{{ role }}</span>{{ " " if not loop.last }}{% endfor %}
+      </p>
+      <p class="hero-credentials-detail">{{ profile.python_experience }}</p>
+    </div>
     <div class="actions"><a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="#contact">Get in touch</a>
     </div>
   </div>
