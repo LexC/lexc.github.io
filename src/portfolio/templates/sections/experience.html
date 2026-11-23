@@ -1,12 +1,26 @@
+{% from "components/experience-icon.html" import experience_icon %}
 <section class="content-section section-wrap" id="experience" aria-labelledby="experience-heading">
   <div class="section-ident"><span class="section-index">02</span>
     <h2 id="experience-heading">Experience</h2>
+    <p>{{ profile.experience_intro }}</p>
   </div>
   <div class="section-body">
-    <p class="section-lead">{{ profile.experience_intro }}</p>
-    <div class="timeline">{% for stage in experience %}<article class="timeline-item"><span class="timeline-dot"></span>
-        <h3>{{ stage.title }}</h3>
-        <p>{{ stage.detail }}</p>
-      </article>{% endfor %}</div>
+    <div class="timeline" style="--timeline-rows: {{ experience|length + 1 }}">{% for stage in experience %}
+      <article class="timeline-item{% if stage.current %} timeline-item-current{% endif %}" style="--chapter: {{ loop.index }}" aria-labelledby="chapter-{{ loop.index }}-heading">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <header class="timeline-card-header">
+          {{ experience_icon(stage.icon, "timeline-chapter-icon") }}
+          <div class="timeline-card-meta">
+            <div class="timeline-card-heading">
+              <h3 id="chapter-{{ loop.index }}-heading">{{ stage.title }}</h3>
+              {% if stage.current %}<span class="timeline-current">CURRENT</span>{% endif %}
+            </div>
+            <p class="timeline-meta-row">{{ experience_icon("calendar") }}<span>{{ stage.period }}</span></p>
+            <p class="timeline-meta-row">{{ experience_icon("institution") }}<span>{{ stage.organization }}</span></p>
+          </div>
+        </header>
+        <p class="timeline-description">{{ stage.detail }}</p>
+      </article>{% endfor %}
+    </div>
   </div>
 </section>

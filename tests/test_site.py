@@ -21,7 +21,25 @@ def test_homepage_has_one_page_sections():
     assert re.findall(r'class="section-index">(\d+)</span>', html) == [
         "01", "02", "03", "04", "05", "06"
     ]
-    assert html.count('class="timeline-item"') == 3
+    experience = html.split('id="experience"', 1)[1].split('</section>', 1)[0]
+    assert re.findall(r'<h3[^>]*>([^<]+)</h3>', experience) == [
+        "The Scientist", "The Data Scientist", "The Mathematician", "The Engineer"
+    ]
+    assert experience.count('class="timeline-dot" aria-hidden="true"') == 4
+    assert experience.count('class="timeline-current"') == 1
+    assert (
+        "I see my career as four chapters, each building on the last, "
+        "from scientific investigation to engineering leadership."
+    ) in experience
+    for text in (
+        "2014 – 2020", "2021 – 2023", "2026 – Present",
+        "Institute of Physics, University of Campinas",
+        "Faculty of Medical Sciences, University of Campinas",
+        "Gaming Laboratories International",
+        "supporting a 60-person department",
+    ):
+        assert text in experience
+    assert "Four chapters" not in experience
     assert "Alex Carvalho" in html
     assert "Lex" in html
     assert (

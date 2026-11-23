@@ -29,8 +29,8 @@ PROFILE = {
         "equally rewarding: the satisfaction of making things work."
     ),
     "experience_intro": (
-        "My experience connects academic research, applied data science, "
-        "and the development of software tools and platforms."
+        "I see my career as four chapters, each building on the last, "
+        "from scientific investigation to engineering leadership."
     ),
     "research_intro": (
         "Scientific contributions in biomedical physics, neuroimaging, "
@@ -117,16 +117,36 @@ EXPERTISE = (
 
 EXPERIENCE = (
     {
-        "title": "Research & computational science",
-        "detail": "Biomedical physics, mathematical modeling, and scientific methods.",
+        "title": "The Scientist",
+        "icon": "microscope",
+        "period": "2014 – 2020",
+        "organization": "Institute of Physics, University of Campinas",
+        "detail": "Conducted experimental neuroimaging research, developing scientific methods, processing physiological signals, and working with fNIRS/fMRI instrumentation.",
+        "current": False,
     },
     {
-        "title": "Data & software development",
-        "detail": "Python workflows, statistical analysis, automation, and engineering.",
+        "title": "The Data Scientist",
+        "icon": "chart",
+        "period": "2021 – 2023",
+        "organization": "Faculty of Medical Sciences, University of Campinas",
+        "detail": "Developed clinical research data workflows, analyzed neurological datasets, and applied statistical methods to biomedical investigations.",
+        "current": False,
     },
     {
-        "title": "Technical leadership",
-        "detail": "Architecture, backend development, technical decisions, and code review.",
+        "title": "The Mathematician",
+        "icon": "sigma",
+        "period": "2025",
+        "organization": "Gaming Laboratories International",
+        "detail": "Performed mathematical and statistical validation of complex systems, evaluated algorithms, and reviewed source code in an industrial environment.",
+        "current": False,
+    },
+    {
+        "title": "The Engineer",
+        "icon": "code",
+        "period": "2026 – Present",
+        "organization": "Gaming Laboratories International",
+        "detail": "Created a software platform supporting a 60-person department, progressing into technical leadership of its architecture, development, and contributors.",
+        "current": True,
     },
 )
 
