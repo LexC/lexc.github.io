@@ -1,0 +1,3 @@
+{% macro keywords(items, label) -%}
+<ul class="keyword-list" aria-label="{{ label }}">{% for keyword in items %}<li>{{ keyword }}</li>{% endfor %}</ul>
+{%- endmacro %}

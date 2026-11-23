@@ -47,14 +47,39 @@ Escape returning focus, and navigation with JavaScript disabled after visual cha
 - `src/portfolio/content.py`: editable copy, grouped content, and validation.
 - `assets/`: shared portrait and design references. Flask serves these at `/assets/`; the static build includes the portrait used by the page. The responsive cyan frame is drawn in SVG in the hero template.
 - `src/portfolio/scientific_art.py`: retained deterministic decorative SVG illustration.
-- `src/portfolio/templates/`: shared shell, homepage composition, and section templates.
-- `src/portfolio/static/css/input.css`: Tailwind and labeled shared/section styles.
+- `src/portfolio/templates/`: shared shell, homepage composition, section templates,
+  and reusable section/keyword components.
+- `src/portfolio/static/css/input.css`: CSS build entry point; imports Tailwind,
+  the theme, shared components, and section layouts into one generated bundle.
+- `src/portfolio/static/css/theme.css`: shared colours, fonts, text sizes, spacing,
+  radii, layout dimensions, and responsive overrides.
+- `src/portfolio/static/css/shared.css`: global foundations and reusable styles.
+- `src/portfolio/static/css/sections.css`: section-specific layout and artwork.
 - `src/portfolio/static/js/site.js`: mobile menu and active-section navigation.
 - `scripts/build.py`: import-safe CSS build and static export.
 - `tests/`: rendering and real export checks.
 - `.github/workflows/pages.yml`: tests/build validation only, **no publishing**.
 
 See [the architecture plan](docs/architecture-plan.md) for boundaries and future growth.
+
+## Keeping the design consistent
+
+Change visual values in `src/portfolio/static/css/theme.css`. All sections use
+the same semantic roles (for example, `--color-accent`, `--font-body`,
+`--text-body`, and `--text-section-title`); responsive values are overridden
+there too. Use `rem` for text so browser font preferences remain effective.
+
+Reuse `.card-title`, `.body-copy`, `.section-lead`, `.button`, `.text-link`, and
+`.keyword-list` from `shared.css` when adding content. Keep section-specific
+grids and artwork in `sections.css`, using theme variables for their visual
+values instead of introducing local colour or typography constants.
+
+Use the `section` macro in `templates/components/section.html` for each numbered
+section. It owns the container, heading, number, optional introduction, and
+accessible heading reference. Put section-specific content inside its call block,
+and use `components/keywords.html` for keyword lists. Keep shared header/footer
+structure in `base.html`. Rebuild with `npm.cmd run css:build` (or use
+`css:watch`); `site.css` is generated and should not be edited directly.
 
 ## Refreshing dependencies
 

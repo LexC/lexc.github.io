@@ -1,0 +1,137 @@
+/* Single source of truth for the portfolio's visual language.
+   Change roles here; shared components and sections inherit them. */
+@theme inline {
+  --color-abyss: var(--color-background);
+  --color-cyan: var(--color-accent);
+}
+
+:root {
+  color-scheme: dark;
+
+  --color-background: #001722;
+  --color-surface: #091b29;
+  --color-surface-featured: #041c29;
+  --color-surface-nav: #071622;
+  --color-header: #001722f5;
+  --color-accent: #00edf2;
+  --color-accent-hover: #86ecf0;
+  --color-accent-strong: #00dce5;
+  --color-link: #4de0e7;
+  --color-link-hover: #a2f7fa;
+  --color-link-underline: #4de0e766;
+  --color-text: #f6f8f9;
+  --color-text-secondary: #e2edf0;
+  --color-text-soft: #d4e4eb;
+  --color-text-muted: #b4c4cc;
+  --color-text-footer: #8aa1ad;
+  --color-on-accent: #06131d;
+  --color-border: #ffffff29;
+  --color-border-strong: #426d80;
+  --color-divider: #ffffff80;
+  --color-header-border: #ffffff36;
+  --color-footer-border: #ffffff1c;
+  --color-button-border: #b1c6d188;
+  --color-hover-surface: #ffffff12;
+  --color-accent-tint: #00edf20a;
+  --color-accent-tint-hover: #00edf21a;
+  --color-accent-border: #00edf225;
+  --color-accent-border-strong: #00c8d17a;
+  --color-panel-border: #00edf244;
+  --color-timeline-border: #69d3df;
+  --color-focus: #7ef2f6;
+  --color-selection: #24dce2;
+  --color-selection-text: #06111b;
+  --surface-timeline: linear-gradient(115deg, #04232e, #031b27);
+  --surface-timeline-current: linear-gradient(115deg, #04323a, #03232d);
+  --surface-research: linear-gradient(100deg, #0b2130, #0a1a27);
+
+  --font-body: Inter, "Segoe UI", Arial, sans-serif;
+  --text-body: 1rem;
+  --text-small: .875rem;
+  --text-caption: .75rem;
+  --text-label: 1.125rem;
+  --text-lead: 1.25rem;
+  --text-card-title: 1.3125rem;
+  --text-section-title: clamp(1.5625rem, 2.6vw, 2.3125rem);
+  --text-featured-title: clamp(1.5625rem, 2.6vw, 2.125rem);
+  --text-hero-title: clamp(3.5rem, 5vw, 5rem);
+  --text-hero-subtitle: clamp(1.75rem, 2.65vw, 2.875rem);
+  --text-credentials: clamp(1.1875rem, 1.57vw, 1.5625rem);
+  --text-eyebrow: clamp(.6875rem, .85vw, .875rem);
+  --text-brand: 2.25rem;
+  --weight-regular: 400;
+  --weight-medium: 550;
+  --weight-semibold: 650;
+  --weight-bold: 700;
+  --weight-heavy: 750;
+  --weight-display: 800;
+  --leading-body: 1.65;
+  --leading-copy: 1.55;
+  --leading-label: 1.5;
+  --leading-heading: 1.35;
+  --leading-section: 1.15;
+  --leading-lead: 1.4;
+  --leading-display: 1.05;
+  --leading-subtitle: 1.22;
+  --leading-compact: 1.45;
+  --leading-meta: 1.6;
+  --leading-location: 1.7;
+  --leading-relaxed: 1.8;
+  --tracking-heading: -.025em;
+  --tracking-section: -.05em;
+  --tracking-featured: -.035em;
+  --tracking-display: -.045em;
+  --tracking-credentials: -.015em;
+  --tracking-eyebrow: .1em;
+  --tracking-badge: .08em;
+  --tracking-brand: -.10625rem;
+
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --radius-small: .3125rem;
+  --radius-control: .5rem;
+  --radius-card: .625rem;
+  --radius-featured: .9375rem;
+  --radius-timeline: 1.25rem;
+  --radius-pill: 999px;
+  --content-max-width: 75rem;
+  --content-width: 81.3%;
+  --section-label-width: 14.6875rem;
+  --section-gap: 2.1875rem;
+  --section-padding: 3.625rem;
+  --section-ident-inset: 2.25rem;
+  --header-height: 4.875rem;
+  --header-offset: 5.625rem;
+}
+
+/* Override roles once per viewport, rather than in individual sections. */
+@media (max-width: 1000px) {
+  :root {
+    --text-hero-title: clamp(2.5rem, 5.6vw, 4.5rem);
+    --content-width: calc(100% - 3.75rem);
+    --section-label-width: 11.875rem;
+  }
+}
+@media (max-width: 720px) {
+  :root {
+    --text-hero-title: clamp(2.375rem, 10vw, 4.375rem);
+    --text-hero-subtitle: clamp(1.5625rem, 6.6vw, 2.1875rem);
+    --text-section-title: 1.9375rem;
+    --text-featured-title: 1.75rem;
+    --text-brand: 1.625rem;
+    --text-lead: 1.0625rem;
+    --content-width: calc(100% - 2.75rem);
+    --section-padding: 3rem;
+    --section-gap: 1.375rem;
+    --section-ident-inset: 1.25rem;
+    --header-height: 4.3125rem;
+  }
+}

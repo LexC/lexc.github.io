@@ -1,9 +1,6 @@
+{% from "components/section.html" import section %}
 {% from "components/experience-icon.html" import experience_icon %}
-<section class="content-section section-wrap" id="experience" aria-labelledby="experience-heading">
-  <div class="section-ident"><span class="section-index">02</span>
-    <h2 id="experience-heading">Experience</h2>
-    <p>{{ profile.experience_intro }}</p>
-  </div>
+{% call section("experience", "Experience", "02", description=profile.experience_intro) %}
   <div class="section-body">
     <div class="timeline" style="--timeline-rows: {{ experience|length + 1 }}">{% for stage in experience %}
       <article class="timeline-item{% if stage.current %} timeline-item-current{% endif %}" style="--chapter: {{ loop.index }}" aria-labelledby="chapter-{{ loop.index }}-heading">
@@ -12,15 +9,15 @@
           {{ experience_icon(stage.icon, "timeline-chapter-icon") }}
           <div class="timeline-card-meta">
             <div class="timeline-card-heading">
-              <h3 id="chapter-{{ loop.index }}-heading">{{ stage.title }}</h3>
+              <h3 class="card-title" id="chapter-{{ loop.index }}-heading">{{ stage.title }}</h3>
               {% if stage.current %}<span class="timeline-current">CURRENT</span>{% endif %}
             </div>
             <p class="timeline-meta-row">{{ experience_icon("calendar") }}<span>{{ stage.period }}</span></p>
             <p class="timeline-meta-row">{{ experience_icon("institution") }}<span>{{ stage.organization }}</span></p>
           </div>
         </header>
-        <p class="timeline-description">{{ stage.detail }}</p>
+        <p class="timeline-description body-copy">{{ stage.detail }}</p>
       </article>{% endfor %}
     </div>
   </div>
-</section>
+{% endcall %}

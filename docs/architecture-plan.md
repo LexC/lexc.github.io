@@ -34,6 +34,9 @@ src/portfolio/
   templates/
     base.html                # Document shell, header, and footer
     index.html               # Homepage composition
+    components/
+      section.html           # Numbered section shell and accessible heading
+      keywords.html          # Shared keyword list
     sections/
       hero.html
       about.html
@@ -42,7 +45,10 @@ src/portfolio/
       projects.html
       contact.html
   static/
-    css/input.css            # Authored styles grouped by section
+    css/input.css            # Tailwind and authored stylesheet imports
+    css/theme.css            # Shared visual tokens and responsive values
+    css/shared.css           # Foundations and reusable components
+    css/sections.css         # Section-specific layout and artwork
     css/site.css             # Generated bundle; ignored
     js/site.js               # Navigation behavior
 tests/
@@ -64,9 +70,11 @@ paths independently of the working directory.
 - Group editorial content by section in `content.py`. The route passes it to
   templates. Preserve Jinja escaping for content and restrict trusted SVG markup
   to generated artwork.
-- Organize `input.css` into labeled tokens, base/layout, shared components, and
-  section rules. Keep responsive rules near their section; compile one CSS bundle.
-  Retain Tailwind and update its template scan path.
+- Keep colours, typography, spacing, radii, and shared layout dimensions in
+  `theme.css`, including responsive token overrides. Keep global foundations and
+  reusable components in `shared.css`; keep section layouts and artwork in
+  `sections.css`. Import these through `input.css` and compile one CSS bundle.
+  Use the section and keyword macros instead of duplicating their markup.
 - Keep the factory and single route together. Keep build orchestration separate
   from runtime code and safe to import. Flask serves development; the exported
   static site is the production artifact.
@@ -158,8 +166,9 @@ These are options, not work to implement or empty files to create now:
 
 - Split `content.py` into a package if sections acquire enough records or editing
   logic to make one file difficult to navigate.
-- Split CSS into shared and section files if its labeled sections become hard to
-  maintain; retain one compiled bundle. Extract template components when reused.
+- Split `sections.css` further if individual section rules become hard to
+  maintain; retain the shared theme and one compiled bundle. Extract template
+  components when reused.
 - Move routes into their own module if additional pages need them. Add detail
   templates and export checks when verified projects or publications warrant pages.
 - Group tests into unit, integration, or browser directories when their number

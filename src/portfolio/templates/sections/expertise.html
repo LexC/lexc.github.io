@@ -1,12 +1,11 @@
-<section class="content-section section-wrap" id="expertise" aria-labelledby="expertise-heading">
-  <div class="section-ident"><span class="section-index">05</span>
-    <h2 id="expertise-heading">Expertise</h2>
-  </div>
+{% from "components/keywords.html" import keywords %}
+{% from "components/section.html" import section %}
+{% call section("expertise", "Expertise", "05") %}
   <div class="section-body expertise-grid">
     {% for category in expertise_categories %}<article class="expertise-card">
-      <h3>{{ category.name }}</h3>
-      <p>{{ category.detail }}</p>
-      <ul class="keyword-list" aria-label="{{ category.name }} keywords">{% for keyword in category.keywords %}<li>{{ keyword }}</li>{% endfor %}</ul>
+      <h3 class="card-title">{{ category.name }}</h3>
+      <p class="body-copy">{{ category.detail }}</p>
+      {{ keywords(category.keywords, category.name ~ " keywords") }}
     </article>{% endfor %}
   </div>
-</section>
+{% endcall %}

@@ -1,8 +1,6 @@
+{% from "components/section.html" import section %}
 {% from "components/contact-icon.html" import contact_icon %}
-<section class="content-section section-wrap contact-section" id="contact" aria-labelledby="contact-heading">
-  <div class="section-ident"><span class="section-index">06</span>
-    <h2 id="contact-heading">Contact</h2>
-  </div>
+{% call section("contact", "Contact", "06", class_name="contact-section") %}
   <div class="section-body">
     <p class="section-lead">{{ profile.contact_intro }}</p>
     <ul class="contact-links">
@@ -12,4 +10,4 @@
     </ul>
     <p class="contact-location">{{ contact_icon("location") }}<span>{{ contact.location }} <span class="contact-relocation">· {{ contact.relocation }}</span></span></p>
   </div>
-</section>
+{% endcall %}
