@@ -80,4 +80,25 @@ deliberately, run `npm.cmd install` to update `package-lock.json`, then verify w
 
 ## Editorial notes
 
-The current research/project panels are credible *category summaries*, not publication citations or verified public case studies. Add the actual bibliography, detailed case studies, and verified contact links before launch. The abstract heatmap is original decorative artwork, not a representation of measured biomedical data.
+The homepage keeps the hero above six sections: About, Experience, Projects,
+Research, Expertise, and Contact. Update portfolio content in
+`src/portfolio/content.py`:
+
+- `PROFILE` holds the existing hero, About, and section introductions.
+- `EXPERIENCE` holds the three development stages; `EXPERTISE` holds the existing
+  About icon labels. Keep these distinct from the new `EXPERTISE_CATEGORIES`.
+- `PROJECTS` holds categories, descriptions, keywords, and optional public URLs.
+  GOTO is internal/proprietary and has no public source or demo link. Keep its
+  description at the approved professional-summary level.
+  Its illustrated cards use the supplied artwork in
+  `src/portfolio/static/images/projects/`; image paths, dimensions, and alt text
+  are editable in each project record.
+- `PUBLICATIONS` holds the selected paper titles, journals, years, and DOI links.
+- `EXPERTISE_CATEGORIES` holds the five capability areas and selective keywords.
+- `CONTACT` holds email, LinkedIn, location, and relocation information; the
+  GitHub profile URL remains in `PROFILE`.
+
+Remaining content placeholders: `RESEARCH["award_name"]` and
+`RESEARCH["award_details"]`. Replace these only when the conference award's name,
+conference, year, and recognition details are supplied. About copy remains
+unchanged for a separate editorial update.

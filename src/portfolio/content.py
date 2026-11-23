@@ -24,13 +24,12 @@ PROFILE = {
         "and the development of software tools and platforms."
     ),
     "research_intro": (
-        "My scientific background includes published research involving machine "
-        "learning and work in scientific computing. Publication details will be "
-        "added after verification."
+        "Scientific contributions in biomedical physics, neuroimaging, "
+        "and computational methods."
     ),
     "projects_intro": (
-        "A selection of computational and engineering work. "
-        "Public project details and links will be added as they're reviewed."
+        "Selected work in software development, data analysis, and machine learning, "
+        "from industry platforms to public technical projects."
     ),
     "contact_intro": (
         "Interested in scientific R&D, medical technology, and building useful "
@@ -42,16 +41,38 @@ PROFILE = {
 NAVIGATION = (
     ("About", "about"),
     ("Experience", "experience"),
-    ("Research", "research"),
     ("Projects", "projects"),
+    ("Research", "research"),
+    ("Expertise", "expertise"),
     ("Contact", "contact"),
 )
 
 RESEARCH = {
-    "kicker": "SCIENTIFIC FOUNDATION",
-    "headline": "Questions worth investigating.",
-    "description": "Scientific computing, biomedical research, statistical methods, and machine learning.",
-    "note": "Publication bibliography coming after review.",
+    # Replace these placeholders with verified award details when available.
+    "award_name": "[Conference award name]",
+    "award_details": "[Conference, year, and recognition details]",
+}
+
+PUBLICATIONS = (
+    {
+        "title": "Revealing the spatiotemporal requirements for accurate subject identification with resting-state functional connectivity: a simultaneous fNIRS-fMRI study",
+        "journal": "Neurophotonics",
+        "year": "2023",
+        "url": "https://doi.org/10.1117/1.NPh.10.1.013510",
+    },
+    {
+        "title": "Development of novel methods to investigate the brain at rest",
+        "journal": "Revista Brasileira de Física Médica",
+        "year": "2017",
+        "url": "https://doi.org/10.29384/rbfm.2017.v11.n3.p33",
+    },
+)
+
+CONTACT = {
+    "email": "18586901+LexC@users.noreply.github.com",
+    "linkedin_url": "https://www.linkedin.com/in/alexccrv",
+    "location": "Netherlands",
+    "relocation": "Open to relocation",
 }
 
 
@@ -69,8 +90,8 @@ def validate_content():
     ):
         raise ValueError("Missing profile content: credentials")
     targets = [target for _, target in NAVIGATION]
-    if len(set(targets)) != len(targets) or set(targets) != {"about", "experience", "research", "projects", "contact"}:
-        raise ValueError("Navigation must reference each homepage section exactly once")
+    if targets != ["about", "experience", "projects", "research", "expertise", "contact"]:
+        raise ValueError("Navigation must reference all six homepage sections in order")
     from urllib.parse import urlsplit
     url = urlsplit(PROFILE["github_url"])
     if url.scheme != "https" or not url.netloc:
@@ -101,21 +122,74 @@ EXPERIENCE = (
 
 PROJECTS = (
     {
-        "number": "01",
-        "name": "Software platforms",
-        "detail": "Architecture, backend engineering, and maintainable systems.",
-        "icon": "⌘",
+        "name": "GOTO",
+        "category": "Software Platform for Mathematical Analysis",
+        "access": "Internal / Proprietary",
+        "internal": True,
+        "detail": "GOTO (Game Outcome Testing Optimizer) is an internal Python platform that automates and standardizes mathematical analysis and validation workflows.",
+        "role_label": "My role",
+        "responsibilities": "Initiated and developed the original framework, and now lead the platform's architecture, development, code reviews, releases, and contributors.",
+        "keywords": ("Python", "Software Architecture", "Automation", "Technical Leadership"),
+        "image": "images/projects/goto-platform.png",
+        "image_width": 1535,
+        "image_height": 1024,
+        "image_alt": "Conceptual software platform with connected processing modules, mathematical validation, and standardized outputs.",
+        "url": None,
     },
     {
-        "number": "02",
-        "name": "Scientific computing",
-        "detail": "Numerical methods, modeling, and computational tools.",
-        "icon": "∿",
+        "name": "NuFlow",
+        "category": "Scientific Data Analysis & Automation",
+        "access": "Independent Project",
+        "internal": False,
+        "detail": "Independently developed a Python pipeline for statistical analysis of experimental data, automating statistical comparisons, visualizations, and Excel report generation for reproducible scientific workflows.",
+        "responsibilities": None,
+        "keywords": ("Python", "Scientific Computing", "Statistical Analysis", "Automation"),
+        "image": "images/projects/nuflow-genomics.png",
+        "image_width": 1536,
+        "image_height": 1024,
+        "image_alt": "Conceptual genomics visualization combining cell clusters in a UMAP-style scatterplot, a gene-expression heatmap, and expression distributions.",
+        "url": "https://github.com/LexC/NuFlow",
     },
     {
-        "number": "03",
-        "name": "Data & automation",
-        "detail": "Reproducible data workflows and reliable automation.",
-        "icon": "◇",
+        "name": "Fraud_Classifier",
+        "category": "Machine Learning Classification",
+        "access": "Independent Project",
+        "internal": False,
+        "detail": "Developed an end-to-end fraud-detection pipeline covering PostgreSQL data ingestion, feature engineering, comparison of nine classification models, hyperparameter optimization, and performance evaluation.",
+        "responsibilities": None,
+        "keywords": ("Python", "PostgreSQL", "scikit-learn", "LightGBM"),
+        "image": "images/projects/fraud-classifier-boundary.png",
+        "image_width": 1447,
+        "image_height": 1087,
+        "image_alt": "Conceptual machine-learning visualization with two classification groups, a nonlinear decision boundary, and confidence regions.",
+        "url": "https://github.com/LexC/Fraud_Classifier",
+    },
+)
+
+EXPERTISE_CATEGORIES = (
+    {
+        "name": "Scientific Computing",
+        "detail": "Numerical analysis, scientific programming, and signal processing.",
+        "keywords": ("Python", "NumPy", "SciPy", "MATLAB"),
+    },
+    {
+        "name": "Software Engineering",
+        "detail": "Python backend development, software architecture, automation, and object-oriented programming. Code review, testing, and release management.",
+        "keywords": ("Python", "Git", "Testing", "Release management"),
+    },
+    {
+        "name": "Data Science & Machine Learning",
+        "detail": "Statistical analysis, data processing, classification, model evaluation, and data visualization.",
+        "keywords": ("pandas", "scikit-learn", "SQL"),
+    },
+    {
+        "name": "Biomedical Research",
+        "detail": "Biomedical physics, neuroimaging, physiological signal processing, experimental design, and scientific instrumentation.",
+        "keywords": ("fNIRS", "fMRI", "Experimental design"),
+    },
+    {
+        "name": "Technical Leadership",
+        "detail": "Technical decision-making, architecture ownership, contributor coordination, code reviews, technical documentation, and engineering workflows.",
+        "keywords": ("Architecture ownership", "Contributor coordination"),
     },
 )

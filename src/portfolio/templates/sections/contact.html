@@ -1,9 +1,15 @@
+{% from "components/contact-icon.html" import contact_icon %}
 <section class="content-section section-wrap contact-section" id="contact" aria-labelledby="contact-heading">
-  <div class="section-ident"><span class="section-index">05</span>
+  <div class="section-ident"><span class="section-index">06</span>
     <h2 id="contact-heading">Contact</h2>
   </div>
   <div class="section-body">
-    <p class="section-lead">{{ profile.contact_intro }}</p><a class="button button-primary" href="{{ profile.github_url }}" target="_blank" rel="noopener noreferrer">Connect on GitHub <span aria-hidden="true">↗</span></a>
-    <p class="muted-note">Additional verified contact channels will be added before launch.</p>
+    <p class="section-lead">{{ profile.contact_intro }}</p>
+    <ul class="contact-links">
+      <li>{{ contact_icon("email") }}<a class="text-link" href="mailto:{{ contact.email }}">{{ contact.email }}</a></li>
+      <li>{{ contact_icon("linkedin") }}<a class="text-link" href="{{ contact.linkedin_url }}" target="_blank" rel="noopener noreferrer" aria-label="Alex Carvalho on LinkedIn (opens in a new tab)">LinkedIn</a></li>
+      <li>{{ contact_icon("github") }}<a class="text-link" href="{{ profile.github_url }}" target="_blank" rel="noopener noreferrer" aria-label="LexC on GitHub (opens in a new tab)">GitHub</a></li>
+    </ul>
+    <p class="contact-location">{{ contact_icon("location") }}<span>{{ contact.location }} <span class="contact-relocation">· {{ contact.relocation }}</span></span></p>
   </div>
 </section>

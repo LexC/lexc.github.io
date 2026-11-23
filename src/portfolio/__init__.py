@@ -4,9 +4,10 @@ from pathlib import Path
 
 from flask import Flask, render_template, send_from_directory
 from jinja2 import StrictUndefined
-from .content import validate_content, RESEARCH
-
-from .content import PROFILE, NAVIGATION, EXPERTISE, EXPERIENCE, PROJECTS
+from .content import (
+    CONTACT, EXPERIENCE, EXPERTISE, EXPERTISE_CATEGORIES, NAVIGATION,
+    PROFILE, PROJECTS, PUBLICATIONS, RESEARCH, validate_content,
+)
 
 
 def create_app(testing: bool = False) -> Flask:
@@ -31,6 +32,9 @@ def create_app(testing: bool = False) -> Flask:
             expertise=EXPERTISE,
             experience=EXPERIENCE,
             projects=PROJECTS,
+            publications=PUBLICATIONS,
+            contact=CONTACT,
+            expertise_categories=EXPERTISE_CATEGORIES,
         )
 
     return app
