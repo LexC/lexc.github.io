@@ -15,9 +15,18 @@ PROFILE = {
         "and software engineering."
     ),
     "about": (
-        "I'm Alex de Castro Carvalho, a physicist working across scientific "
-        "research, software engineering, and technical leadership. "
-        "I care about clarity, reproducibility, and tools people can trust."
+        "I got into physics because I wanted to understand how the world works, "
+        "particularly the human brain. Scientific research taught me more than how "
+        "to answer questions. It taught me how to ask the right ones, design "
+        "experiments, understand complex systems, and distinguish meaningful "
+        "evidence from noise.\n\n"
+        "Along the way, I became fascinated by the instruments, people, and "
+        "processes that make discoveries possible. Understanding how these pieces "
+        "fit together made me better at extracting insights from "
+        "complex data, and eventually led me to build tools that help others do "
+        "the same.\n\n"
+        "What started as the pleasure of finding things out grew into something "
+        "equally rewarding: the satisfaction of making things work."
     ),
     "experience_intro": (
         "My experience connects academic research, applied data science, "
@@ -98,11 +107,12 @@ def validate_content():
         raise ValueError("github_url must be an absolute HTTPS URL")
 
 EXPERTISE = (
-    ("Biomedical science", "science"),
-    ("Software engineering", "code"),
-    ("Data science", "data"),
-    ("Machine learning", "ml"),
-    ("Technical leadership", "lead"),
+    ("Curiosity", "telescope"),
+    ("Systems Thinking", "network"),
+    ("Biomedical Research", "brain"),
+    ("Scientific Computing & Data", "data"),
+    ("Software Engineering", "code"),
+    ("Technical Leadership", "users"),
 )
 
 EXPERIENCE = (

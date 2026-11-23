@@ -1,10 +1,14 @@
+{% from "components/about-icon.html" import about_icon %}
 <section class="content-section section-wrap" id="about" aria-labelledby="about-heading">
   <div class="section-ident"><span class="section-index">01</span>
     <h2 id="about-heading">About</h2>
   </div>
   <div class="section-body">
-    <p class="section-lead">{{ profile.about }}</p>
-    <ul class="expertise-list">{% for label, icon in expertise %}<li><span class="expertise-icon" aria-hidden="true">{% if icon == "science" %}✳{% elif icon == "code" %}〈/〉{% elif icon == "data" %}▤{% elif icon == "ml" %}◇{% else %}⌘{% endif %}</span><span>{{ label }}</span>
-      </li>{% endfor %}</ul>
+    {% for paragraph in profile.about.split('\n\n') %}<p class="section-lead">{{ paragraph }}</p>
+    {% endfor %}
   </div>
+  <ul class="about-icons" aria-label="Scientific and technical strengths">
+    {% for label, icon in expertise %}<li>{{ about_icon(icon) }}<span>{{ label }}</span></li>
+    {% endfor %}
+  </ul>
 </section>

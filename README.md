@@ -100,5 +100,4 @@ Research, Expertise, and Contact. Update portfolio content in
 
 Remaining content placeholders: `RESEARCH["award_name"]` and
 `RESEARCH["award_details"]`. Replace these only when the conference award's name,
-conference, year, and recognition details are supplied. About copy remains
-unchanged for a separate editorial update.
+conference, year, and recognition details are supplied.

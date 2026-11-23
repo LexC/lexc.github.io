@@ -337,32 +337,58 @@ button,a {
   max-width:860px;
   margin:0 0 28px
 }
-.expertise-list {
-  display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));
-  list-style:none;
-  margin:30px 0 0;
-  padding:0
+#about {
+  grid-template-columns:235px minmax(0,1fr);
+  grid-template-areas:"heading narrative" "icons narrative";
+  grid-template-rows:auto 1fr;
+  row-gap:24px
 }
-.expertise-list li {
+#about .section-ident {
+  grid-area:heading
+}
+#about .section-ident h2 {
+  margin-bottom:0
+}
+#about .section-body {
+  grid-area:narrative;
+  align-self:center
+}
+#about .section-lead:last-child {
+  margin-bottom:0
+}
+.about-icons {
+  grid-area:icons;
+  align-self:start;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px 12px;
+  list-style:none;
+  margin:0;
+  padding:0 0 0 36px;
+  min-width:0
+}
+.about-icons li {
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:13px;
+  gap:10px;
+  min-width:0;
   text-align:center;
-  font-size:11px;
+  font-size:.875rem;
+  line-height:1.45;
   color:#e2edf0;
-  padding:5px 9px;
-  border-right:1px solid #ffffff23
+  overflow-wrap:anywhere
 }
-.expertise-list li:last-child {
-  border:0
+.about-icons span {
+  max-width:100%;
+  text-wrap:balance
 }
-.expertise-icon {
-  font-family:Consolas,monospace;
+.about-icon {
+  display:block;
+  flex-shrink:0;
   color:#4de0e7;
-  font-size:28px;
-  height:36px
+  width:2rem;
+  height:2rem
 }
 /* Experience */
 .timeline {
@@ -742,13 +768,6 @@ button,a {
   .content-section {
     grid-template-columns:190px minmax(0,1fr)
   }
-  .expertise-list {
-    grid-template-columns:repeat(3,1fr);
-    row-gap:25px
-  }
-  .expertise-list li:nth-child(3) {
-    border:0
-  }
 }
 @media(max-width:720px) {
   .header-inner {
@@ -839,9 +858,22 @@ button,a {
   .section-ident h2 {
     font-size:31px
   }
-  .expertise-list {
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:16px 0
+  #about {
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"heading" "narrative" "icons";
+    grid-template-rows:auto;
+    row-gap:22px
+  }
+  .about-icons {
+    width:100%;
+    max-width:28rem;
+    justify-self:center;
+    gap:24px 20px;
+    padding:8px 0 0
+  }
+  .about-icon {
+    width:1.75rem;
+    height:1.75rem
   }
   .timeline {
     grid-template-columns:1fr;
