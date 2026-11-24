@@ -105,8 +105,8 @@ deliberately, run `npm.cmd install` to update `package-lock.json`, then verify w
 
 ## Editorial notes
 
-The homepage keeps the hero above six sections: About, Experience, Projects,
-Research, Expertise, and Contact. Update portfolio content in
+The homepage keeps the hero above six sections: About, Experience, Expertise,
+Projects, Research, and Contact. Update portfolio content in
 `src/portfolio/content.py`:
 
 - `PROFILE` holds the existing hero, About, and section introductions.
@@ -119,7 +119,8 @@ Research, Expertise, and Contact. Update portfolio content in
   `src/portfolio/static/images/projects/`; image paths, dimensions, and alt text
   are editable in each project record.
 - `PUBLICATIONS` holds the selected paper titles, journals, years, and DOI links.
-- `EXPERTISE_CATEGORIES` holds the five capability areas and selective keywords.
+- `EXPERTISE_CATEGORIES` holds the six capability domains, outline icons, and ten
+  technical keywords per domain, rendered as a responsive six-card grid.
 - `CONTACT` holds email, LinkedIn, location, and relocation information; the
   GitHub profile URL remains in `PROFILE`.
 

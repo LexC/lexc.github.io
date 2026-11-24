@@ -50,9 +50,9 @@ PROFILE = {
 NAVIGATION = (
     ("About", "about"),
     ("Experience", "experience"),
+    ("Expertise", "expertise"),
     ("Projects", "projects"),
     ("Research", "research"),
-    ("Expertise", "expertise"),
     ("Contact", "contact"),
 )
 
@@ -170,7 +170,7 @@ def validate_content():
     ):
         raise ValueError("Missing profile content: credentials")
     targets = [target for _, target in NAVIGATION]
-    if targets != ["about", "experience", "projects", "research", "expertise", "contact"]:
+    if targets != ["about", "experience", "expertise", "projects", "research", "contact"]:
         raise ValueError("Navigation must reference all six homepage sections in order")
     from urllib.parse import urlsplit
     url = urlsplit(PROFILE["github_url"])
@@ -269,28 +269,64 @@ PROJECTS = (
 
 EXPERTISE_CATEGORIES = (
     {
-        "name": "Scientific Computing",
-        "detail": "Numerical analysis, scientific programming, and signal processing.",
-        "keywords": ("Python", "NumPy", "SciPy", "MATLAB"),
+        "name": "Software Engineering",
+        "icon": "code",
+        "detail": "Reliable software platforms and automation for scientific and engineering applications.",
+        "keywords": (
+            "Python", "Java", "Software Architecture", "Backend Development",
+            "Object-Oriented Programming (OOP)", "Software Testing", "Test Automation",
+            "Git", "Docker", "Linux",
+        ),
     },
     {
-        "name": "Software Engineering",
-        "detail": "Python backend development, software architecture, automation, and object-oriented programming. Code review, testing, and release management.",
-        "keywords": ("Python", "Git", "Testing", "Release management"),
+        "name": "Scientific Computing",
+        "icon": "processor",
+        "detail": "Computational algorithms for scientific modeling, signal processing, and image analysis.",
+        "keywords": (
+            "Python", "MATLAB", "NumPy", "SciPy", "Algorithm Development",
+            "Numerical Analysis", "Digital Signal Processing (DSP)", "Image Processing",
+            "Data Visualization", "Scientific Programming",
+        ),
+    },
+    {
+        "name": "Experimental & Biomedical R&D",
+        "icon": "microscope",
+        "detail": "Biomedical instrumentation, experimental methodology, neuroimaging, and hardware prototyping.",
+        "keywords": (
+            "Biomedical Optics", "Medical Imaging", "Neuroimaging",
+            "Biomedical Instrumentation", "Experimental Design", "Clinical Research",
+            "fMRI", "fNIRS", "LabVIEW", "Rapid Prototyping",
+        ),
     },
     {
         "name": "Data Science & Machine Learning",
-        "detail": "Statistical analysis, data processing, classification, model evaluation, and data visualization.",
-        "keywords": ("pandas", "scikit-learn", "SQL"),
+        "icon": "chart",
+        "detail": "Predictive modeling and reproducible data pipelines for scientific applications.",
+        "keywords": (
+            "Python", "SQL", "Machine Learning", "scikit-learn", "pandas",
+            "Data Engineering", "ETL", "Statistical Modeling", "Predictive Modeling",
+            "Data Pipelines",
+        ),
     },
     {
-        "name": "Biomedical Research",
-        "detail": "Biomedical physics, neuroimaging, physiological signal processing, experimental design, and scientific instrumentation.",
-        "keywords": ("fNIRS", "fMRI", "Experimental design"),
+        "name": "Applied Mathematics",
+        "icon": "sigma",
+        "detail": "Mathematical modeling, algorithm verification, and quantitative validation of complex systems.",
+        "keywords": (
+            "Mathematical Modeling", "Statistical Analysis", "Probability Theory",
+            "Hypothesis Testing", "Regression Analysis", "Graph Theory", "Spectral Analysis",
+            "Mathematical Analysis", "Algorithm Validation", "Verification & Validation (V&V)",
+        ),
     },
     {
         "name": "Technical Leadership",
-        "detail": "Technical decision-making, architecture ownership, contributor coordination, code reviews, technical documentation, and engineering workflows.",
-        "keywords": ("Architecture ownership", "Contributor coordination"),
+        "icon": "network",
+        "detail": "Software architecture ownership, technical direction, and engineering team leadership.",
+        "keywords": (
+            "Technical Leadership", "Team Leadership", "System Architecture",
+            "Technical Project Management", "Software Development Life Cycle (SDLC)",
+            "Code Review", "Release Management", "Process Improvement",
+            "Technical Documentation", "Mentoring",
+        ),
     },
 )

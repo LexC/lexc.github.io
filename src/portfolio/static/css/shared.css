@@ -221,7 +221,8 @@ button,a {
   display:grid;
   grid-template-columns:var(--section-label-width) minmax(0,1fr);
   gap:var(--section-gap);
-  scroll-margin-top:76px
+  /* Land on the content after the divider and its top padding. */
+  scroll-margin-top:calc(-1 * var(--section-padding) - 1px)
 }
 
 .section-ident {
@@ -271,7 +272,7 @@ button,a {
   margin:0 0 var(--space-7)
 }
 
-.expertise-card,.publication-card {
+.publication-card {
   background:var(--color-surface);
   border:1px solid var(--color-border);
   border-radius:var(--radius-card);

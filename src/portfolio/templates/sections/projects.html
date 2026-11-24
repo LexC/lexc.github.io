@@ -1,7 +1,7 @@
 {% from "components/keywords.html" import keywords %}
 {% from "components/section.html" import section, section_body %}
 {% from "components/contact-icon.html" import contact_icon %}
-{% call section("projects", "Projects", "03") %}
+{% call section("projects", "Projects", "04") %}
   {% call section_body(description=profile.projects_intro) %}
     <div class="project-grid">{% for project in projects %}<article class="project-card{% if project.internal %} project-card-internal{% endif %}" aria-labelledby="project-{{ loop.index }}-heading">
         <figure class="project-illustration">

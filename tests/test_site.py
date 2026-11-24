@@ -14,7 +14,7 @@ def test_homepage_has_one_page_sections():
     response = app.test_client().get("/")
     html = response.get_data(as_text=True)
     assert response.status_code == 200
-    sections = ["about", "experience", "projects", "research", "expertise", "contact"]
+    sections = ["about", "experience", "expertise", "projects", "research", "contact"]
     assert re.findall(r'<section[^>]* id="([^"]+)"', html) == sections
     navigation = html.split('<nav class="site-nav"', 1)[1].split('</nav>', 1)[0]
     assert re.findall(r'href="#([^"]+)"', navigation) == sections
