@@ -44,6 +44,12 @@ def test_export_resolves_local_links(tmp_path):
         assert target.is_file() and target.stat().st_size, reference
         if url.fragment:
             assert unquote(url.fragment) in Document(target.read_text(encoding="utf-8")).ids
+    # Sharing services fetch the production URL, so the absolute image must
+    # also exist in the static export rather than only in Flask development.
+    html = index.read_text(encoding="utf-8")
+    assert 'content="https://lexc.github.io/static/images/social-card.jpg"' in html
+    assert (tmp_path / "static/images/social-card.jpg").is_file()
+    assert (tmp_path / "favicon.ico").is_file()
 
 
 def test_export_rejects_nonempty_destination(tmp_path):

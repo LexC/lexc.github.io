@@ -5,9 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#001722">
     <meta name="description" content="{{ profile.name }}: biophysics, scientific computing, and software engineering.">
+    <link rel="canonical" href="{{ config.SITE_URL }}">
+    <link rel="icon" href="{{ url_for('favicon') }}" sizes="16x16 32x32 48x48 64x64">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}" sizes="any">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}" sizes="180x180">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ profile.name }} | Scientific thinking. Engineering execution.">
     <meta property="og:description" content="Biophysics, scientific computing, and software engineering.">
+    <meta property="og:url" content="{{ config.SITE_URL }}">
+    <meta property="og:site_name" content="Lex · {{ profile.name }}">
+    <meta property="og:image" content="{{ config.SITE_URL }}static/images/social-card.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="628">
+    <meta property="og:image:alt" content="{{ profile.name }} — Scientific thinking. Engineering execution.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ profile.name }} | Scientific thinking. Engineering execution.">
+    <meta name="twitter:description" content="Biophysics, scientific computing, and software engineering.">
+    <meta name="twitter:image" content="{{ config.SITE_URL }}static/images/social-card.jpg">
+    <meta name="twitter:image:alt" content="{{ profile.name }} — Scientific thinking. Engineering execution.">
     <title>{{ profile.name }} | Biophysics · Scientific Computing · Engineering</title>
     <script>
       (() => {

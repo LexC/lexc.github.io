@@ -1,10 +1,14 @@
-"""Fast smoke tests for the Python site, generated visual, and static export."""
+"""Rendering, content, and image checks for the portfolio."""
 
 import re
-import struct
+from io import BytesIO
+from pathlib import Path
+from html.parser import HTMLParser
+from urllib.parse import urlsplit
+from xml.etree import ElementTree
 
+from PIL import Image
 from portfolio import create_app
-from portfolio.scientific_art import heatmap_svg
 from portfolio import content
 import pytest
 
@@ -57,10 +61,48 @@ def test_no_missing_routes():
     assert app.test_client().get("/does-not-exist").status_code == 404
 
 
-def test_heatmap_is_deterministic_and_accessible():
-    assert heatmap_svg() == heatmap_svg()
-    assert "Scientific heatmap illustration" in heatmap_svg()
-    assert "not measured data" in heatmap_svg()
+def test_favicons_and_sharing_metadata_are_served():
+    class Head(HTMLParser):
+        def __init__(self, html):
+            super().__init__()
+            self.meta = {}
+            self.links = {}
+            self.feed(html)
+
+        def handle_starttag(self, tag, attrs):
+            attrs = dict(attrs)
+            if tag == "meta":
+                self.meta[attrs.get("property") or attrs.get("name")] = attrs.get("content")
+            elif tag == "link":
+                self.links.setdefault(attrs.get("rel"), []).append(attrs)
+
+    client = create_app(testing=True).test_client()
+    head = Head(client.get("/").get_data(as_text=True))
+    assert head.links["canonical"][0]["href"] == "https://lexc.github.io/"
+    assert head.meta["og:url"] == "https://lexc.github.io/"
+    assert head.meta["twitter:card"] == "summary_large_image"
+    assert head.meta["og:image"] == head.meta["twitter:image"]
+    card_url = urlsplit(head.meta["og:image"])
+    assert card_url.scheme == "https" and card_url.netloc == "lexc.github.io"
+    response = client.get(card_url.path)
+    assert response.status_code == 200 and response.mimetype == "image/jpeg"
+    with Image.open(BytesIO(response.data)) as card:
+        assert card.size == (int(head.meta["og:image:width"]), int(head.meta["og:image:height"]))
+        assert card.width > card.height
+    assert len(response.data) < 1_000_000
+    assert "Alex Carvalho" in head.meta["og:image:alt"]
+    for icon in head.links["icon"] + head.links["apple-touch-icon"]:
+        response = client.get(icon["href"])
+        assert response.status_code == 200
+        if icon.get("type") == "image/svg+xml":
+            assert response.mimetype == "image/svg+xml"
+            assert ElementTree.fromstring(response.data).tag.endswith("svg")
+        else:
+            with Image.open(BytesIO(response.data)) as image:
+                if icon["rel"] == "apple-touch-icon":
+                    assert image.size == (180, 180)
+                else:
+                    assert {(16, 16), (32, 32), (48, 48)} <= image.info["sizes"]
 
 
 def test_missing_content_fails_clearly(monkeypatch):
@@ -101,9 +143,9 @@ def test_project_illustrations_are_mapped_accessible_and_served():
     cards = re.findall(r'<article\b.*?</article>', section, re.DOTALL)
     assert len(cards) == 3
     expected = (
-        ("GOTO", "goto-platform.png"),
-        ("NuFlow", "nuflow-genomics.png"),
-        ("Fraud_Classifier", "fraud-classifier-boundary.png"),
+        ("GOTO", "goto-platform.webp"),
+        ("NuFlow", "nuflow-genomics.webp"),
+        ("Fraud_Classifier", "fraud-classifier-boundary.webp"),
     )
     for card, (name, filename) in zip(cards, expected):
         assert f'>{name}</h3>' in card
@@ -122,10 +164,43 @@ def test_project_illustrations_are_mapped_accessible_and_served():
             assert 'class="project-responsibilities"' not in card
         response = client.get(source)
         assert response.status_code == 200
-        assert response.mimetype == "image/png"
-        assert response.data.startswith(b'\x89PNG\r\n\x1a\n')
-        width, height = struct.unpack('>II', response.data[16:24])
+        assert response.mimetype == "image/webp"
+        with Image.open(BytesIO(response.data)) as image:
+            assert image.format == "WEBP"
+            width, height = image.size
         assert f'width="{width}" height="{height}"' in card
+
+
+def test_optimized_images_preserve_pixels_and_link_to_original_figures():
+    root = Path(__file__).resolve().parents[1]
+    client = create_app(testing=True).test_client()
+    html = client.get("/").get_data(as_text=True)
+    originals = [("images/portrait.webp", root / "assets/IMG-2026117_ed.png")]
+    originals.extend((project["image"], root / "assets/originals/projects" /
+                      (Path(project["image"]).stem + ".png")) for project in content.PROJECTS)
+    for image_path, original_path in originals:
+        response = client.get(f"/static/{image_path}")
+        assert response.status_code == 200
+        assert response.mimetype == "image/webp"
+        assert f'/static/{image_path}' in html
+        with Image.open(BytesIO(response.data)) as optimized, Image.open(original_path) as original:
+            assert optimized.size == original.size
+            assert optimized.convert("RGBA").tobytes() == original.convert("RGBA").tobytes()
+        assert len(response.data) < original_path.stat().st_size
+    for publication in content.PUBLICATIONS:
+        preview = f'/static/{publication["image"]}'
+        original = f'/assets/{publication["original_image"]}'
+        assert f'href="{original}"' in html
+        assert f'src="{preview}"' in html
+        response = client.get(preview)
+        assert response.status_code == 200
+        assert response.mimetype == "image/webp"
+        with Image.open(BytesIO(response.data)) as image:
+            assert image.size == (publication["image_width"], publication["image_height"])
+        original_response = client.get(original)
+        assert original_response.status_code == 200
+        assert original_response.mimetype == "image/png"
+        assert len(response.data) < len(original_response.data)
 
 
 def test_publications_and_direct_contact_links():

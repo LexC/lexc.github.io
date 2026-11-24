@@ -1,11 +1,35 @@
-# Lex · Alex Carvalho
+# Lex Portfolio
 
-A Python-first, dark-themed, single-page professional portfolio for Alex de Castro Carvalho, developed using **Flask, Jinja2, Tailwind CSS, and Frozen-Flask**.
+[![Build and deploy portfolio](https://github.com/LexC/lexc.github.io/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/LexC/lexc.github.io/actions/workflows/pages.yml)
 
-## Local development (Windows PowerShell)
+Source code for Alex Carvalho's personal website, configured for deployment to
+[lexc.github.io](https://lexc.github.io/).
 
-Use Python 3.12+ and Node.js 22 (CI uses Python 3.12 and Node.js 22), plus Git.
-Run commands from the repository root:
+The project uses Flask and Jinja2 for local development and Frozen-Flask to export
+a static website. Tailwind compiles the styles, and a small JavaScript layer
+handles navigation and publication-card sizing. The deployed site does not require
+a Python server.
+
+## Technology
+
+| Component | Tool |
+| --- | --- |
+| Application and templates | Python, Flask, Jinja2 |
+| Styles | Tailwind CSS and custom CSS |
+| Static export | Frozen-Flask |
+| Image optimization | Pillow and WebP |
+| Tests | pytest |
+| Build and deployment | GitHub Actions and GitHub Pages |
+
+## Requirements
+
+- Python 3.12 or later
+- Node.js 22 and npm
+- Git
+
+## Quick start
+
+Run from PowerShell:
 
 ```powershell
 git clone https://github.com/LexC/lexc.github.io.git
@@ -19,130 +43,51 @@ npm.cmd run css:build
 python -m flask --app portfolio:create_app run --debug
 ```
 
-Visit **http://127.0.0.1:5000**. For live CSS changes, use `npm.cmd run css:watch` in a second terminal. Flask auto-reloads Python and template changes in debug mode. On Linux/macOS use `npm` instead of `npm.cmd`; activate the environment with `source .venv/bin/activate`. If PowerShell activation is unavailable, use `.venv/Scripts/python.exe` directly for Python commands.
+Open **http://127.0.0.1:5000**. For live stylesheet updates, run
+`npm.cmd run css:watch` in a second terminal.
 
-## Test and export
+On Linux/macOS, activate with `source .venv/bin/activate` and use `npm` in place
+of `npm.cmd`. See the [development guide](docs/development.md) for setup details
+and the PowerShell activation fallback.
+
+## Build and test
+
+With the virtual environment activated:
 
 ```powershell
 python scripts/build.py
 python -m pytest -q
 ```
 
-The generated `dist/` directory contains static files suitable for GitHub Pages, with no continuously running Python backend.
-
-For a temporary export, use `python scripts/build.py --output path/to/empty-directory`.
-Relative destinations resolve from the repository root. Alternative destinations
-must be empty or nonexistent; only the default `dist/` permits stale-file cleanup.
-The build compiles CSS before freezing and never installs dependencies or publishes.
-Tests exercise this same command with a temporary directory and check assets,
-anchors, ARIA references, rendering, content validation, and escaping.
-
-Preview the static output with `python -m http.server 8000 --directory dist`, then
-open **http://127.0.0.1:8000**. Check desktop/mobile layout, keyboard menu controls,
-Escape returning focus, and navigation with JavaScript disabled after visual changes.
-
-## Architecture
-
-- `src/portfolio/__init__.py`: Flask application factory and homepage route.
-- `src/portfolio/content.py`: editable copy, grouped content, and validation.
-- `assets/`: shared portrait and design references. Flask serves these at `/assets/`; the static build includes the portrait used by the page. The responsive cyan frame is drawn in SVG in the hero template.
-- `src/portfolio/scientific_art.py`: retained deterministic decorative SVG illustration.
-- `src/portfolio/templates/`: shared shell, homepage composition, section templates,
-  and reusable section/keyword components.
-- `src/portfolio/static/css/input.css`: CSS build entry point; imports Tailwind,
-  the theme, shared components, and section layouts into one generated bundle.
-- `src/portfolio/static/css/theme.css`: shared colours, fonts, text sizes, spacing,
-  radii, layout dimensions, and responsive overrides.
-- `src/portfolio/static/css/shared.css`: global foundations and reusable styles.
-- `src/portfolio/static/css/sections.css`: section-specific layout and artwork.
-- `src/portfolio/static/js/site.js`: mobile menu and active-section navigation.
-- `scripts/build.py`: import-safe CSS build and static export.
-- `tests/`: rendering and real export checks.
-- `.github/workflows/pages.yml`: builds/tests every pull request and push to `main`,
-  then deploys successful builds from `main` to GitHub Pages.
-
-See [the architecture plan](docs/architecture-plan.md) for boundaries and future growth.
-
-## Keeping the design consistent
-
-Change visual values in `src/portfolio/static/css/theme.css`. All sections use
-the same semantic roles (for example, `--color-accent`, `--font-body`,
-`--text-body`, and `--text-section-title`); responsive values are overridden
-there too. Use `rem` for text so browser font preferences remain effective.
-
-Reuse `.card-title`, `.body-copy`, `.section-lead`, `.button`, `.text-link`, and
-`.keyword-list` from `shared.css` when adding content. Keep section-specific
-grids and artwork in `sections.css`, using theme variables for their visual
-values instead of introducing local colour or typography constants.
-
-Use the `section` macro in `templates/components/section.html` for each numbered
-section. It owns the container, heading, number, and accessible heading reference.
-Use `section_body` from the same component for the main column and its optional
-introduction. Use `components/keywords.html` for keyword lists. Keep shared header/footer
-structure in `base.html`. Rebuild with `npm.cmd run css:build` (or use
-`css:watch`); `site.css` is generated and should not be edited directly.
-
-## Refreshing dependencies
-
-Python dependency ranges live in `pyproject.toml`; resolved runtime/test versions
-live in `requirements/development.lock`. To refresh, use a disposable clean virtual
-environment with the supported Python version:
+The build compiles CSS and writes the static site to `dist/`. To preview it:
 
 ```powershell
-python -m venv .venv-refresh
-.venv-refresh/Scripts/python -m pip install --upgrade ".[dev]"
-.venv-refresh/Scripts/python -m pip freeze --exclude pip --exclude lex-portfolio | Set-Content -Encoding ascii requirements/development.lock
+python -m http.server 8000 --directory dist
 ```
 
-Review the lock diff, install it into the development environment, reinstall the
-editable package with `--no-deps`, and run build/tests. Build-backend dependencies
-are managed by pip's isolated build environment. For npm, update dependency ranges
-deliberately, run `npm.cmd install` to update `package-lock.json`, then verify with
-`npm.cmd ci` and the same build/tests. Commit manifests and locks together.
+Open **http://127.0.0.1:8000**. Generated CSS and `dist/` are ignored by Git.
 
-## Publishing to GitHub Pages
+## Repository structure
 
-The workflow publishes the generated `dist/` directory to **https://lexc.github.io/**.
-Pull requests run the build and tests without publishing. Pushes to `main` and
-manual runs on `main` deploy only after both the build and tests succeed.
+```text
+src/portfolio/     Flask application, content, templates, styles, scripts, and web images
+assets/            Original portrait, project artwork, and research figures
+scripts/           Static build and image optimization commands
+tests/             Rendering, image, and static export checks
+requirements/      Locked Python dependencies
+.github/workflows/ Build, test, and GitHub Pages deployment
+docs/              Development, architecture, and publishing guides
+```
 
-One-time GitHub setup:
+## Deployment
 
-1. Open the repository's **Settings → Pages**.
-2. Under **Build and deployment → Source**, select **GitHub Actions**.
-   Use the workflow already in this repository; no additional template is needed.
-3. Commit and push the launch changes to `main`.
-4. Open **Actions → Build and deploy portfolio** and wait for the `build` and
-   `deploy` jobs to succeed. The deployment summary links to the live site.
+The GitHub Actions workflow builds and tests pull requests targeting `main`.
+Successful pushes and manual workflow runs on `main` deploy `dist/` to GitHub
+Pages once hosting is configured. See [Publishing](docs/publishing.md) for setup.
 
-If you enabled Pages after the initial push, open **Actions → Build and deploy
-portfolio → Run workflow**, choose `main`, and run it again. If the `github-pages`
-environment requires approval, approve the pending deployment in that run.
+## Documentation
 
-Future pushes to `main` update the live site automatically. Generated CSS and
-`dist/` remain ignored; commit the source files, not the export. Deployment uses
-GitHub's built-in token and does not require a personal access token or added secrets.
-
-## Editorial notes
-
-The homepage keeps the hero above six sections: About, Experience, Expertise,
-Projects, Research, and Contact. Update portfolio content in
-`src/portfolio/content.py`:
-
-- `PROFILE` holds the existing hero, About, and section introductions.
-- `EXPERIENCE` holds the three development stages; `EXPERTISE` holds the existing
-  About icon labels. Keep these distinct from the new `EXPERTISE_CATEGORIES`.
-- `PROJECTS` holds categories, descriptions, keywords, and optional public URLs.
-  GOTO is internal/proprietary and has no public source or demo link. Keep its
-  description at the approved professional-summary level.
-  Its illustrated cards use the supplied artwork in
-  `src/portfolio/static/images/projects/`; image paths, dimensions, and alt text
-  are editable in each project record.
-- `PUBLICATIONS` holds the selected paper titles, journals, years, and DOI links.
-- `EXPERTISE_CATEGORIES` holds the six capability domains, outline icons, and ten
-  technical keywords per domain, rendered as a responsive six-card grid.
-- `CONTACT` holds email, LinkedIn, location, and relocation information; the
-  GitHub profile URL remains in `PROFILE`.
-
-`RESEARCH` holds the research narrative, scientific distinctions, and contribution
-metrics. `PUBLICATIONS` also includes author credit and research-topic tags.
+- [Development and maintenance](docs/development.md): local setup, content edits,
+  styles, images, and dependency updates.
+- [Architecture](docs/architecture.md): file responsibilities and build boundaries.
+- [Publishing](docs/publishing.md): GitHub Pages configuration and deployment.

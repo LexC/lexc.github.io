@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Lex</title>
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="#001722"/>
+  <rect x="10" y="17" width="2" height="30" rx="1" fill="#00edf2"/>
+  <rect x="23" y="17" width="7" height="29" rx="0" fill="#f6f8f9"/>
+  <rect x="23" y="39" width="20" height="7" rx="0" fill="#f6f8f9"/>
+  <circle cx="51" cy="42" r="4" fill="#00edf2"/>
+</svg>

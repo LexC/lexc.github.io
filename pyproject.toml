@@ -9,13 +9,17 @@ requires-python = ">=3.12"
 dependencies = ["Flask>=3.1,<4", "Frozen-Flask>=1.0,<2"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8,<10"]
+dev = ["pytest>=8,<10", "Pillow>=13,<14"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-portfolio = ["templates/**/*.html", "static/css/*.css", "static/js/*.js"]
+portfolio = [
+    "templates/**/*.html", "static/css/*.css", "static/js/*.js",
+    "static/images/**/*.webp", "static/images/*.webp", "static/images/*.jpg",
+    "static/*.svg", "static/*.ico", "static/*.png",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

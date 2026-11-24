@@ -1,6 +1,7 @@
 """Flask application for Alex Carvalho's single-page professional portfolio."""
 
 from pathlib import Path
+import mimetypes
 
 from flask import Flask, render_template, send_from_directory
 from jinja2 import StrictUndefined
@@ -13,9 +14,16 @@ from .content import (
 def create_app(testing: bool = False) -> Flask:
     """Create a local-development app that can also be frozen to static HTML."""
     validate_content()
+    # Windows may register WebP as application/octet-stream.
+    mimetypes.add_type("image/webp", ".webp")
     app = Flask(__name__)
     app.jinja_env.undefined = StrictUndefined
     app.config.update(TESTING=testing)
+    app.config["SITE_URL"] = "https://lexc.github.io/"
+
+    @app.get("/favicon.ico")
+    def favicon():
+        return app.send_static_file("favicon.ico")
 
     @app.get("/assets/<path:filename>")
     def assets(filename):
