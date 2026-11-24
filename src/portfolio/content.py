@@ -150,7 +150,7 @@ PUBLICATIONS = (
 )
 
 CONTACT = {
-    "email": "18586901+LexC@users.noreply.github.com",
+    "email": "alexccvl@outlook.com",
     "linkedin_url": "https://www.linkedin.com/in/alexccrv",
     "location": "Netherlands",
     "relocation": "Open to relocation",

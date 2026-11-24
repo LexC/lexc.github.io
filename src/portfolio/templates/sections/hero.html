@@ -1,3 +1,4 @@
+{% from "components/contact-icon.html" import contact_icon %}
 <section class="hero section-wrap" aria-labelledby="hero-heading">
   <div class="hero-content">
     <p class="eyebrow">{{ profile.eyebrow }}</p>
@@ -9,7 +10,10 @@
       </p>
       <p class="hero-credentials-detail">{{ profile.python_experience }}</p>
     </div>
-    <div class="actions"><a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="#contact">Get in touch</a>
+    <div class="actions hero-actions">
+      <a class="button button-primary" href="#contact">Get in touch {{ contact_icon("external") }}</a>
+      <a class="hero-social-link" href="{{ contact.linkedin_url }}" target="_blank" rel="noopener noreferrer" aria-label="Alex Carvalho on LinkedIn (opens in a new tab)">{{ contact_icon("linkedin") }}</a>
+      <a class="hero-social-link" href="{{ profile.github_url }}" target="_blank" rel="noopener noreferrer" aria-label="LexC on GitHub (opens in a new tab)">{{ contact_icon("github") }}</a>
     </div>
   </div>
   <div class="hero-art">

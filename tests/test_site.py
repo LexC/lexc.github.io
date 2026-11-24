@@ -133,7 +133,7 @@ def test_publications_and_direct_contact_links():
     for url in (
         "https://doi.org/10.1117/1.NPh.10.1.013510",
         "https://doi.org/10.3390/jal6010011",
-        "mailto:18586901+LexC@users.noreply.github.com",
+        "mailto:alexccvl@outlook.com",
         "https://www.linkedin.com/in/alexccrv",
         "https://github.com/LexC",
     ):
