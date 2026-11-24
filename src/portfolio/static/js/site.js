@@ -50,3 +50,82 @@
   initMobileMenu();
   initSectionNavigation();
 })();
+
+/* Use the tallest publication's copy to size matching 5:4 figure areas. */
+(() => {
+  if (!("ResizeObserver" in window)) return;
+  const compact = window.matchMedia("(max-width: 1000px)");
+
+  document.querySelectorAll(".publication-list").forEach((list) => {
+    const cards = [...list.querySelectorAll(".publication-card")];
+    const contents = cards.map((card) => card.querySelector(".publication-content"));
+    if (!cards.length || contents.some((content) => !content)) return;
+    let signature = "";
+    let pending = false;
+
+    function dimensions() {
+      return cards.map((card, index) =>
+        `${card.clientWidth}:${contents[index].getBoundingClientRect().height}`
+      ).join(";");
+    }
+
+    function reset() {
+      list.classList.remove("publication-list-dynamic");
+      list.style.removeProperty("--publication-image-width");
+      cards.forEach((card) => card.classList.remove("publication-card-dynamic"));
+    }
+
+    function layout() {
+      pending = false;
+      if (dimensions() === signature) return;
+      reset();
+
+      if (!compact.matches) {
+        const available = Math.min(...cards.map((card) => card.clientWidth));
+        const minimumTextWidth = 16 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+        let imageWidth = 0;
+        let fitted = false;
+        cards.forEach((card) => card.classList.add("publication-card-dynamic"));
+
+        // Start with the widest text column and converge as its lines wrap.
+        for (let attempt = 0; attempt < 24; attempt++) {
+          list.style.setProperty("--publication-image-width", `${imageWidth}px`);
+          const tallestHeight = Math.max(...contents.map((content) => content.getBoundingClientRect().height));
+          const requiredWidth = tallestHeight * 5 / 4;
+          if (requiredWidth > available - minimumTextWidth) break;
+          if (Math.abs(requiredWidth - imageWidth) < .5) {
+            list.style.setProperty("--publication-image-width", `${requiredWidth}px`);
+            list.classList.add("publication-list-dynamic");
+            fitted = true;
+            break;
+          }
+          imageWidth = requiredWidth;
+        }
+
+        // Stack when a 5:4 figure would leave too little room for readable copy.
+        if (!fitted) {
+          reset();
+        }
+      }
+      signature = dimensions();
+    }
+
+    function schedule() {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(layout);
+    }
+
+    const observer = new ResizeObserver(schedule);
+    cards.forEach((card) => observer.observe(card));
+    compact.addEventListener("change", () => {
+      signature = "";
+      schedule();
+    });
+    document.fonts?.ready.then(() => {
+      signature = "";
+      schedule();
+    });
+    layout();
+  });
+})();

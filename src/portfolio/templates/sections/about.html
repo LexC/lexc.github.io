@@ -1,10 +1,10 @@
-{% from "components/section.html" import section %}
+{% from "components/section.html" import section, section_body %}
 {% from "components/about-icon.html" import about_icon %}
 {% call section("about", "About", "01") %}
-  <div class="section-body">
+  {% call section_body() %}
     {% for paragraph in profile.about.split('\n\n') %}<p class="section-lead">{{ paragraph }}</p>
     {% endfor %}
-  </div>
+  {% endcall %}
   <ul class="about-icons" aria-label="Scientific and technical strengths">
     {% for label, icon in expertise %}<li>{{ about_icon(icon) }}<span>{{ label }}</span></li>
     {% endfor %}

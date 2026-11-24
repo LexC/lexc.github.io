@@ -17,7 +17,7 @@
   color:var(--color-text-muted);
 }
 /* Justify prose without splitting words; keep the final line naturally aligned. */
-.body-copy,.project-responsibilities,.section-lead,.section-ident p {
+.body-copy,.project-responsibilities,.section-lead {
   text-align:justify;
   text-align-last:start;
   hyphens:none;
@@ -252,26 +252,22 @@ button,a {
 .section-ident h2 {
   font-size:var(--text-section-title);
   letter-spacing:var(--tracking-section);
-  margin:0 0 var(--space-5);
+  margin:0;
   line-height:var(--leading-section)
-}
-
-.section-ident p {
-  font-size:var(--text-body);
-  line-height:var(--leading-body);
-  color:var(--color-text-muted);
-  padding-right:var(--space-3)
 }
 
 .section-body {
   min-width:0
 }
 
+.section-description {
+  margin:0 0 var(--space-5)
+}
+
 .section-lead {
   font-size:var(--text-lead);
   line-height:var(--leading-lead);
   color:var(--color-text);
-  max-width:860px;
   margin:0 0 var(--space-7)
 }
 

@@ -1,11 +1,11 @@
 {% from "components/keywords.html" import keywords %}
-{% from "components/section.html" import section %}
+{% from "components/section.html" import section, section_body %}
 {% call section("expertise", "Expertise", "05") %}
-  <div class="section-body expertise-grid">
+  {% call section_body(class_name="expertise-grid") %}
     {% for category in expertise_categories %}<article class="expertise-card">
       <h3 class="card-title">{{ category.name }}</h3>
       <p class="body-copy">{{ category.detail }}</p>
       {{ keywords(category.keywords, category.name ~ " keywords") }}
     </article>{% endfor %}
-  </div>
+  {% endcall %}
 {% endcall %}

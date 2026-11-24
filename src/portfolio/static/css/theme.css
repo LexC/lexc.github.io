@@ -43,7 +43,12 @@
   --color-selection-text: #06111b;
   --surface-timeline: linear-gradient(115deg, #04232e, #031b27);
   --surface-timeline-current: linear-gradient(115deg, #04323a, #03232d);
-  --surface-research: linear-gradient(100deg, #0b2130, #0a1a27);
+  --color-distinction-gold: #D4AF58;
+  --color-distinction-border: #B99A50;
+  --color-distinction-title: #F3E6C6;
+  --color-distinction-text: #C6C7BB;
+  --color-distinction-divider: #655739;
+  --color-distinction-surface: #102326;
 
   --font-body: Inter, "Segoe UI", Arial, sans-serif;
   --text-body: 1rem;
@@ -54,6 +59,7 @@
   --text-card-title: 1.3125rem;
   --text-section-title: clamp(1.5625rem, 2.6vw, 2.3125rem);
   --text-featured-title: clamp(1.5625rem, 2.6vw, 2.125rem);
+  --text-metric: 2.75rem;
   --text-hero-title: clamp(3.5rem, 5vw, 5rem);
   --text-hero-subtitle: clamp(1.75rem, 2.65vw, 2.875rem);
   --text-credentials: clamp(1.1875rem, 1.57vw, 1.5625rem);

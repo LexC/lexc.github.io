@@ -57,23 +57,94 @@ NAVIGATION = (
 )
 
 RESEARCH = {
-    # Replace these placeholders with verified award details when available.
-    "award_name": "[Conference award name]",
-    "award_details": "[Conference, year, and recognition details]",
+    "paragraphs": (
+        "My research at the University of Campinas (UNICAMP) encompassed experimental "
+        "biophysics, biomedical optics, and neuroscience, with emphasis on cerebral "
+        "neurovascular coupling, hemodynamics, and functional brain networks. I designed "
+        "and conducted multimodal neuroimaging experiments using functional near-infrared "
+        "spectroscopy (fNIRS) and functional magnetic resonance imaging (fMRI), operating "
+        "NIRScout instrumentation and 3 T MRI systems, developing acquisition protocols, "
+        "and engineering custom MRI-compatible hardware through CAD modeling, 3D "
+        "printing, and experimental prototyping. I served as a technical reference for "
+        "fMRI acquisition and processing, supervised experimental activities, and trained "
+        "master's and doctoral researchers.",
+        "My computational research focused on multidimensional biomedical signal and "
+        "image processing, developing scientific software and analytical methodologies "
+        "in MATLAB and Python. These incorporated wavelet and spline-based artifact "
+        "correction, principal component analysis, nuisance regression, spatial "
+        "normalization, temporal filtering, and hemoglobin concentration estimation. "
+        "I investigated resting-state functional connectivity and neurological disorders "
+        "through regional time-series analysis, correlation matrices, and brain network "
+        "characterization, contributing to published research involving spectral analysis, "
+        "graph theory, complex systems, Riemannian geometry, pattern recognition, and "
+        "machine learning.",
+        "Within clinical neuroscience, I investigated the neurological and neuropsychiatric "
+        "sequelae of COVID-19, developing computational infrastructure for large-scale "
+        "clinical research, including clinical database development, data curation, quality "
+        "control, biostatistical analysis, and temporal characterization of persistent "
+        "symptoms. My responsibilities extended to research coordination, methodological "
+        "development, scientific interpretation, and communication of results. These "
+        "scientific investigations resulted in multiple publications and scientific awards, "
+        "including recognition for first-author research.",
+    ),
+    "distinctions": (
+        {
+            "title": "Best Scientific Work Award",
+            "role": "First Author & Oral Presenter",
+            "event": "XXIX Brazilian Congress of Neurology",
+            "year": "2021",
+            "work": "Persistent neurological symptoms after mild infection with COVID-19: analysis of 6,989 individuals",
+        },
+        {
+            "title": "Best Scientific Work Award",
+            "role": "Coauthor",
+            "event": "XXIX Brazilian Congress of Neurology",
+            "year": "2021",
+            "work": None,
+        },
+        {
+            "title": "Award-Winning Doctoral Oral Presentation",
+            "role": "Coauthor",
+            "event": "8th BRAINN Congress",
+            "year": "2022",
+            "work": None,
+        },
+    ),
+    "metrics": (
+        ("4", "Scientific Research Papers"),
+        ("7", "Scientific Conference Contributions"),
+        ("4", "First-Author Contributions"),
+    ),
 }
 
 PUBLICATIONS = (
     {
+        "title": "Graph Analysis of Age-Related Changes in Resting-State Functional Connectivity Measured with fNIRS",
+        "journal": "Journal of Ageing and Longevity",
+        "year": "2026",
+        "image": "jal-06-00011-g003.png",
+        "image_width": 4271,
+        "image_height": 3616,
+        "image_fit": "cover",
+        "image_alt": "Cortical maps of resting-state functional brain networks across age groups and hemoglobin signals.",
+        "authors_before": "Sánchez, V., Novi, S., ",
+        "author": "Carvalho, A. C.",
+        "keywords": ("Graph Theory", "Complex Networks", "Spectral Analysis", "Biomedical Optics", "Statistical Analysis"),
+        "url": "https://doi.org/10.3390/jal6010011",
+    },
+    {
         "title": "Revealing the spatiotemporal requirements for accurate subject identification with resting-state functional connectivity: a simultaneous fNIRS-fMRI study",
         "journal": "Neurophotonics",
         "year": "2023",
+        "image": "NPh_10_1_013510_f001.png",
+        "image_width": 1245,
+        "image_height": 602,
+        "image_fit": "contain",
+        "image_alt": "Frontal and lateral brain views showing the fNIRS optical probe configuration, with red sources, blue detectors, and yellow channels.",
+        "authors_before": "Novi, S. L., ",
+        "author": "Carvalho, A. C.",
+        "keywords": ("Machine Learning", "Pattern Recognition", "Biomedical Signal Processing", "Multimodal Neuroimaging", "Riemannian Geometry"),
         "url": "https://doi.org/10.1117/1.NPh.10.1.013510",
-    },
-    {
-        "title": "Development of novel methods to investigate the brain at rest",
-        "journal": "Revista Brasileira de Física Médica",
-        "year": "2017",
-        "url": "https://doi.org/10.29384/rbfm.2017.v11.n3.p33",
     },
 )
 

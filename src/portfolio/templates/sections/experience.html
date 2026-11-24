@@ -1,7 +1,7 @@
-{% from "components/section.html" import section %}
+{% from "components/section.html" import section, section_body %}
 {% from "components/experience-icon.html" import experience_icon %}
-{% call section("experience", "Experience", "02", description=profile.experience_intro) %}
-  <div class="section-body">
+{% call section("experience", "Experience", "02") %}
+  {% call section_body(description=profile.experience_intro) %}
     <div class="timeline" style="--timeline-rows: {{ experience|length + 1 }}">{% for stage in experience %}
       <article class="timeline-item{% if stage.current %} timeline-item-current{% endif %}" style="--chapter: {{ loop.index }}" aria-labelledby="chapter-{{ loop.index }}-heading">
         <span class="timeline-dot" aria-hidden="true"></span>
@@ -19,5 +19,5 @@
         <p class="timeline-description body-copy">{{ stage.detail }}</p>
       </article>{% endfor %}
     </div>
-  </div>
+  {% endcall %}
 {% endcall %}

@@ -132,14 +132,16 @@ def test_publications_and_direct_contact_links():
     html = create_app(testing=True).test_client().get("/").get_data(as_text=True)
     for url in (
         "https://doi.org/10.1117/1.NPh.10.1.013510",
-        "https://doi.org/10.29384/rbfm.2017.v11.n3.p33",
+        "https://doi.org/10.3390/jal6010011",
         "mailto:18586901+LexC@users.noreply.github.com",
         "https://www.linkedin.com/in/alexccrv",
         "https://github.com/LexC",
     ):
         assert f'href="{url}"' in html
-    assert "Revista Brasileira de Física Médica" in html
-    assert "[Conference award name]" in html
-    assert "[Conference, year, and recognition details]" in html
+    assert "Journal of Ageing and Longevity" in html
+    assert "Scientific Distinctions" in html
+    assert "First Author &amp; Oral Presenter" in html
+    assert "XXIX Brazilian Congress of Neurology · 2021" in html
+    assert "8th BRAINN Congress · 2022" in html
     assert "Netherlands" in html
     assert "Open to relocation" in html

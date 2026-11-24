@@ -75,9 +75,9 @@ grids and artwork in `sections.css`, using theme variables for their visual
 values instead of introducing local colour or typography constants.
 
 Use the `section` macro in `templates/components/section.html` for each numbered
-section. It owns the container, heading, number, optional introduction, and
-accessible heading reference. Put section-specific content inside its call block,
-and use `components/keywords.html` for keyword lists. Keep shared header/footer
+section. It owns the container, heading, number, and accessible heading reference.
+Use `section_body` from the same component for the main column and its optional
+introduction. Use `components/keywords.html` for keyword lists. Keep shared header/footer
 structure in `base.html`. Rebuild with `npm.cmd run css:build` (or use
 `css:watch`); `site.css` is generated and should not be edited directly.
 
@@ -123,6 +123,5 @@ Research, Expertise, and Contact. Update portfolio content in
 - `CONTACT` holds email, LinkedIn, location, and relocation information; the
   GitHub profile URL remains in `PROFILE`.
 
-Remaining content placeholders: `RESEARCH["award_name"]` and
-`RESEARCH["award_details"]`. Replace these only when the conference award's name,
-conference, year, and recognition details are supplied.
+`RESEARCH` holds the research narrative, scientific distinctions, and contribution
+metrics. `PUBLICATIONS` also includes author credit and research-topic tags.

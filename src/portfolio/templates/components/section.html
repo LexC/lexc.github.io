@@ -1,9 +1,15 @@
-{% macro section(id, title, index, description="", class_name="") -%}
+{% macro section(id, title, index, class_name="") -%}
 <section class="content-section section-wrap{{ ' ' ~ class_name if class_name }}" id="{{ id }}" aria-labelledby="{{ id }}-heading">
   <div class="section-ident"><span class="section-index">{{ index }}</span>
     <h2 id="{{ id }}-heading">{{ title }}</h2>
-    {% if description %}<p>{{ description }}</p>{% endif %}
   </div>
   {{ caller() }}
 </section>
+{%- endmacro %}
+
+{% macro section_body(description="", class_name="") -%}
+<div class="section-body{{ ' ' ~ class_name if class_name }}">
+  {% if description %}<p class="section-description body-copy">{{ description }}</p>{% endif %}
+  {{ caller() }}
+</div>
 {%- endmacro %}
