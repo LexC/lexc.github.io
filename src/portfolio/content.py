@@ -41,8 +41,9 @@ PROFILE = {
         "from industry platforms to public technical projects."
     ),
     "contact_intro": (
-        "Interested in scientific R&D, medical technology, and building useful "
-        "software. I'm open to conversations with researchers and engineering teams."
+        "I'm always interested in meeting people working on challenging scientific "
+        "and technological problems, exploring new ideas, and discussing professional "
+        "opportunities."
     ),
     "github_url": "https://github.com/LexC",
 }

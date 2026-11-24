@@ -1,6 +1,7 @@
 {% macro contact_icon(kind) -%}
 <svg class="contact-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
   {% if kind == "email" %}<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/>
+  {% elif kind == "external" %}<path d="M7 17 17 7M7 7h10v10"/>
   {% elif kind == "linkedin" %}<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7m4 0v-7m0 3a3 3 0 0 1 6 0v4"/><circle cx="7" cy="7" r=".5"/>
   {% elif kind == "github" %}<path d="M9 21v-4c-4 1-4-2-6-2m12 6v-4c0-1-.4-1.6-1-2 3-.4 6-1.5 6-6a5 5 0 0 0-1.4-3.5c.2-.8.2-2-.2-3.5-1.5 0-3 1-3.5 1.5a13 13 0 0 0-5.8 0C8.5 3 7 2 5.5 2c-.4 1.5-.4 2.7-.2 3.5A5 5 0 0 0 4 9c0 4.5 3 5.6 6 6-.6.4-1 1-1 2"/>
   {% else %}<path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>{% endif %}

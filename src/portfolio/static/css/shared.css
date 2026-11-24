@@ -317,9 +317,9 @@ button,a {
 .site-footer {
   border-top:1px solid var(--color-footer-border);
   padding-block:26px;
-  display:flex;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
   align-items:center;
-  justify-content:space-between;
   gap:var(--space-3);
   color:var(--color-text-footer);
   font-size:var(--text-caption)
@@ -330,7 +330,16 @@ button,a {
 }
 
 .site-footer a {
+  justify-self:end;
+  display:inline-flex;
+  align-items:center;
+  gap:var(--space-2);
+  min-height:44px;
   color:var(--color-text-soft)
+}
+
+.site-footer a:hover {
+  color:var(--color-link-hover)
 }
 
 @media(max-width:1000px) {
@@ -402,6 +411,8 @@ button,a {
   }
 
   .site-footer {
+    display:flex;
+    justify-content:space-between;
     flex-wrap:wrap;
     line-height:var(--leading-relaxed)
   }
