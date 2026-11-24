@@ -58,7 +58,8 @@ Escape returning focus, and navigation with JavaScript disabled after visual cha
 - `src/portfolio/static/js/site.js`: mobile menu and active-section navigation.
 - `scripts/build.py`: import-safe CSS build and static export.
 - `tests/`: rendering and real export checks.
-- `.github/workflows/pages.yml`: tests/build validation only, **no publishing**.
+- `.github/workflows/pages.yml`: builds/tests every pull request and push to `main`,
+  then deploys successful builds from `main` to GitHub Pages.
 
 See [the architecture plan](docs/architecture-plan.md) for boundaries and future growth.
 
@@ -99,9 +100,28 @@ are managed by pip's isolated build environment. For npm, update dependency rang
 deliberately, run `npm.cmd install` to update `package-lock.json`, then verify with
 `npm.cmd ci` and the same build/tests. Commit manifests and locks together.
 
-## Publishing status
+## Publishing to GitHub Pages
 
-**GitHub Pages publishing is deliberately disabled.** Merging code will not automatically deploy the website. Restore a deployment step only when the portfolio is ready for a public launch.
+The workflow publishes the generated `dist/` directory to **https://lexc.github.io/**.
+Pull requests run the build and tests without publishing. Pushes to `main` and
+manual runs on `main` deploy only after both the build and tests succeed.
+
+One-time GitHub setup:
+
+1. Open the repository's **Settings → Pages**.
+2. Under **Build and deployment → Source**, select **GitHub Actions**.
+   Use the workflow already in this repository; no additional template is needed.
+3. Commit and push the launch changes to `main`.
+4. Open **Actions → Build and deploy portfolio** and wait for the `build` and
+   `deploy` jobs to succeed. The deployment summary links to the live site.
+
+If you enabled Pages after the initial push, open **Actions → Build and deploy
+portfolio → Run workflow**, choose `main`, and run it again. If the `github-pages`
+environment requires approval, approve the pending deployment in that run.
+
+Future pushes to `main` update the live site automatically. Generated CSS and
+`dist/` remain ignored; commit the source files, not the export. Deployment uses
+GitHub's built-in token and does not require a personal access token or added secrets.
 
 ## Editorial notes
 

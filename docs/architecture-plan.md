@@ -2,6 +2,10 @@
 
 Status: implemented; final desktop/mobile browser verification is pending.
 
+Publishing update: `.github/workflows/pages.yml` now deploys successful builds
+from `main` to GitHub Pages. The publishing-disabled references below record the
+original migration scope; see the README for the current launch instructions.
+
 Verification: the original four tests passed before migration. After migration,
 all seven rendering/export tests pass, including in a clean virtual environment
 with locked Python dependencies and `npm ci`. Flask route discovery succeeds,
