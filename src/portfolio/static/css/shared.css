@@ -64,6 +64,63 @@ button,a {
   outline-offset:4px
 }
 
+[data-image-preview] {
+  cursor:zoom-in
+}
+
+[data-image-preview]:focus-visible {
+  outline-offset:-4px
+}
+
+.image-preview {
+  position:fixed;
+  inset:0;
+  width:max-content;
+  max-width:calc(100% - 2rem);
+  max-height:calc(100% - 2rem);
+  margin:auto;
+  padding:.5rem;
+  overflow:hidden;
+  border:1px solid var(--color-border-strong);
+  border-radius:var(--radius-featured);
+  background:var(--color-background);
+  color:var(--color-text)
+}
+
+.image-preview::backdrop {
+  background:var(--color-image-backdrop)
+}
+
+.image-preview img {
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:min(76rem, calc(100vw - 3.25rem));
+  max-height:calc(100vh - 6.5rem);
+  max-height:calc(100dvh - 6.5rem);
+  margin-inline:auto
+}
+
+.image-preview-close {
+  display:grid;
+  place-items:center;
+  width:2.75rem;
+  height:2.75rem;
+  margin:0 0 .5rem auto;
+  padding:0;
+  border:1px solid var(--color-border-strong);
+  border-radius:50%;
+  background:var(--color-surface);
+  color:inherit;
+  font-size:1.75rem;
+  line-height:1;
+  cursor:pointer
+}
+
+.image-preview-close:hover {
+  background:var(--color-hover-surface)
+}
+
 .skip-link {
   position:absolute;
   left:1rem;

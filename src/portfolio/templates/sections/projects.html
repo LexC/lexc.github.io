@@ -4,9 +4,9 @@
 {% call section("projects", "Projects", "04") %}
   {% call section_body(description=profile.projects_intro) %}
     <div class="project-grid">{% for project in projects %}<article class="project-card{% if project.internal %} project-card-internal{% endif %}" aria-labelledby="project-{{ loop.index }}-heading">
-        <figure class="project-illustration">
+        <button class="project-illustration" type="button" data-image-preview aria-label="Enlarge {{ project.name }} image">
           <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.image_alt }}" width="{{ project.image_width }}" height="{{ project.image_height }}" loading="lazy" decoding="async">
-        </figure>
+        </button>
         <div class="project-content">
           <div class="project-top">
             <h3 id="project-{{ loop.index }}-heading">{{ project.name }}</h3>

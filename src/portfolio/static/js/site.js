@@ -51,6 +51,43 @@
   initSectionNavigation();
 })();
 
+/* Open project images and full research figures in one modal. */
+(() => {
+  const preview = document.getElementById("image-preview");
+  if (!preview?.showModal) return;
+
+  const image = preview.querySelector("img");
+  let previousScrollY = 0;
+
+  document.querySelectorAll("[data-image-preview]").forEach((trigger) => {
+    trigger.setAttribute("aria-haspopup", "dialog");
+    trigger.addEventListener("click", (event) => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || preview.open) return;
+
+      event.preventDefault();
+      const thumbnail = trigger.querySelector("img");
+      image.alt = thumbnail.alt;
+      image.src = trigger.href ?? thumbnail.src;
+      previousScrollY = window.scrollY;
+      preview.showModal();
+    });
+  });
+
+  preview.addEventListener("click", (event) => {
+    if (event.target !== image) preview.close();
+  });
+
+  window.addEventListener("scroll", () => {
+    if (!preview.open) return;
+    if (window.scrollY > previousScrollY) preview.close();
+    previousScrollY = window.scrollY;
+  }, { passive: true });
+
+  preview.addEventListener("wheel", (event) => {
+    if (event.deltaY > 0 && !event.ctrlKey) preview.close();
+  }, { passive: true });
+})();
+
 /* Use the tallest publication's copy to size matching 5:4 figure areas. */
 (() => {
   if (!("ResizeObserver" in window)) return;
