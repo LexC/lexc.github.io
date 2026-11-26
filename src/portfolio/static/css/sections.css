@@ -516,12 +516,13 @@
 .project-card {
   display:grid;
   grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
-  gap:22px;
-  padding:var(--space-5);
+  gap:0;
+  padding:0;
   background:var(--color-surface-featured);
   border:1px solid var(--color-border-strong);
   border-radius:var(--radius-featured);
-  min-width:0
+  min-width:0;
+  overflow:hidden
 }
 
 .project-card-internal {
@@ -529,24 +530,29 @@
 }
 
 .project-illustration {
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+  position:relative;
   margin:0;
-  padding-right:14px;
+  padding:0;
+  border:0;
   border-right:1px solid var(--color-border-strong);
-  min-width:0
+  background:transparent;
+  min-width:0;
+  overflow:hidden
 }
 
 .project-illustration img {
+  position:absolute;
+  inset:0;
   display:block;
   width:100%;
-  height:auto;
-  object-fit:contain
+  height:100%;
+  object-fit:contain;
+  object-position:center
 }
 
 .project-content {
   min-width:0;
+  padding:var(--space-5);
   overflow-wrap:anywhere
 }
 
@@ -648,20 +654,17 @@
 
 @media(max-width:720px) {
   .project-card {
-    grid-template-columns:minmax(0,1fr);
-    gap:var(--space-5);
-    padding:var(--space-5)
+    grid-template-columns:minmax(0,1fr)
   }
 
   .project-illustration {
-    padding:0 0 var(--space-5);
     border-right:0;
     border-bottom:1px solid var(--color-border-strong)
   }
 
   .project-illustration img {
-    max-width:480px;
-    margin-inline:auto
+    position:static;
+    height:auto
   }
 
   .project-top {
